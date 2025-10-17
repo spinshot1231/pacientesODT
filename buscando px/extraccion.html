@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PractiDent | Extracciones Dentales Gratuitas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4f46e5',
+                        'secondary': '#10b981',
+                        'accent': '#fef3c7',
+                        'danger': '#dc2626',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 min-h-screen flex flex-col justify-center items-center">
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-4xl">
+        <div class="bg-white p-8 sm:p-12 rounded-3xl shadow-2xl border-t-8 border-secondary">
+            
+            <h1 class="text-4xl font-extrabold text-secondary mb-2">Extracciones Dentales (Servicio Clínico de Práctica)</h1>
+            <p class="text-2xl font-bold text-danger mb-6">Tu extracción es GRATUITA. Solo cubres la Radiografía.</p>
+            
+            <p class="text-xl text-gray-700 mb-8">
+                Ofrecemos extracciones de piezas dentales necesarias para el avance de nuestra práctica supervisada. Recibes atención segura, profesional y solo cubres el costo de un estudio esencial.
+            </p>
+
+            <div class="space-y-8">
+                
+                <!-- TRATAMIENTOS INCLUIDOS (SIMPLIFICADO) -->
+                <div class="border-l-4 border-primary pl-4">
+                    <h3 class="text-2xl font-bold text-gray-900">Tu Servicio Incluye:</h3>
+                    <ul class="mt-2 text-gray-600 list-disc list-inside space-y-1">
+                        <li>**Extracción Simple:** Retiro de piezas dentales bajo anestesia local, sin costo por la mano de obra.</li>
+                        <li>**Cuidado y Orientación:** Recibirás todas las instrucciones para tu recuperación post-extracción.</li>
+                    </ul>
+                    <div class="mt-4 p-3 bg-red-50 text-danger rounded-lg font-semibold border border-danger/50">
+                        ⚠️ **IMPORTANTE:** Citas disponibles ÚNICAMENTE en los días y horarios clínicos del alumno.
+                    </div>
+                </div>
+
+                <!-- PROCESO SIMPLIFICADO DE ATENCIÓN (5 PASOS) -->
+                <div class="border-l-4 border-secondary pl-4 pt-4">
+                    <h3 class="text-2xl font-bold text-gray-900">Proceso Rápido de 5 Pasos</h3>
+                    <p class="mt-2 text-gray-600 mb-4">
+                        Tu seguridad es lo primero. Así es como coordinamos tu atención:
+                    </p>
+                    <ol class="mt-2 text-gray-700 list-decimal list-inside space-y-2 font-medium">
+                        <li>**1. Contacto Inicial:** Ponerse en contacto para agendar la valoración inicial del diente.</li>
+                        <li>**2. Historial Básico:** Creación rápida de tu historial clínico con datos esenciales.</li>
+                        <li>**3. Radiografía (Costo Mínimo):** Si el profesor aprueba la valoración, se te solicitará una radiografía para un diagnóstico preciso.</li>
+                        <li>**4. Valoración y Procedimiento:** Evaluación final con el profesor a cargo y ejecución de la extracción.</li>
+                        <li>**5. Seguimiento Post-Cita:** Recibes indicaciones de cuidado y te contactamos para verificar tu cicatrización.</li>
+                    </ol>
+                </div>
+                
+                <!-- COMPARATIVA DE COSTOS Y BENEFICIO EXTRA -->
+                <div class="border-l-4 border-primary pl-4 pt-4">
+                    <h3 class="text-2xl font-bold text-gray-900">Tu Ahorro es GIGANTE</h3>
+                    <p class="mt-2 text-gray-600 mb-4">
+                        Una extracción dental promedio tiene este costo en clínicas privadas, pero con PractiDent solo cubres lo mínimo:
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-gray-100 p-4 rounded-lg shadow-sm mb-3">
+                        <span class="text-lg font-semibold text-gray-800">Costo de Extracción en el Mercado:</span>
+                        <span class="text-2xl font-extrabold text-primary">$600 a $1,200 pesos Aprox.</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-secondary/10 p-4 rounded-lg shadow-sm">
+                        <span class="text-lg font-semibold text-secondary">Tu Único Costo Obligatorio (Radiografía):</span>
+                        <span class="text-2xl font-extrabold text-secondary">$140 a $180 pesos Aprox.</span>
+                    </div>
+                </div>
+
+                <!-- BENEFICIOS EXTRA -->
+                <div class="p-4 bg-yellow-100 border-l-4 border-yellow-500 rounded-lg">
+                    <h3 class="text-xl font-bold text-yellow-800">🎉 ¡Beneficio Exclusivo!</h3>
+                    <p class="mt-1 text-yellow-700">
+                        Solo para pacientes atendidos por PractiDent: Obtén un **30% de Descuento** en la Farmacia DAYAMI para todos tus medicamentos post-operatorios.
+                        <a href="https://dayami.netlify.app" target="_blank" class="font-bold text-yellow-900 underline hover:text-yellow-600 transition duration-150 block mt-1">
+                            Haz clic aquí para visitar la página de Farmacia DAYAMI.
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <p class="text-lg text-gray-700 mb-4 font-semibold">
+                    Recupera <span class="text-red-600 font-extrabold uppercase">TU SONRISA</span> con un Regalo para Mejorar tu Salud.
+                </p>
+                <a href="index.html#contacto" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-lg font-semibold rounded-full shadow-lg text-white bg-secondary hover:bg-emerald-600 transition duration-300 transform hover:scale-105">
+                    Agenda tu Valoración
+                </a>
+            </div>
+            
+            <p class="mt-8 text-sm text-center text-gray-500">
+                <a href="index.html#servicios" class="text-primary hover:text-indigo-700 font-medium">&larr; Volver a Servicios</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

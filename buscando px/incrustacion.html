@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PractiDent | Incrustaciones Dentales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4f46e5',
+                        'secondary': '#10b981',
+                        'accent': '#fef3c7',
+                        'danger': '#dc2626',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 min-h-screen flex flex-col justify-center items-center">
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-4xl">
+        <div class="bg-white p-8 sm:p-12 rounded-3xl shadow-2xl border-t-8 border-secondary">
+            
+            <h1 class="text-4xl font-extrabold text-secondary mb-2">Incrustaciones Dentales Estéticas</h1>
+            <p class="text-2xl font-bold text-gray-700 mb-6">Máxima Estética y Durabilidad: Cubre solo una Mínima Parte del Material.</p>
+            
+            <p class="text-xl text-gray-700 mb-8">
+                Las incrustaciones son la solución ideal para restaurar dientes con desgaste moderado a severo, ofreciendo mayor resistencia y estética que las restauraciones directas. Ofrecemos este servicio avanzado bajo estricta supervisión, solicitando tu cooperación para los materiales de laboratorio (principalmente cerámica).
+            </p>
+
+            <div class="space-y-10">
+                
+                <!-- PROCESO SIMPLIFICADO DE ATENCIÓN (4 PASOS) -->
+                <div class="border-l-4 border-primary pl-4">
+                    <h3 class="text-2xl font-bold text-gray-900">Proceso de Restauración Estética</h3>
+                    <p class="mt-2 text-gray-600 mb-4">
+                        Tu incrustación se realiza en dos citas para garantizar la perfección en el ajuste y la estética:
+                    </p>
+                    <ol class="mt-2 text-gray-700 list-decimal list-inside space-y-2 font-medium">
+                        <li>**1. Valoración y Cotización:** Contacto y valoración por el alumno. El profesor aprueba el caso y se te presenta el costo de cooperación final. **El costo final se cotiza directamente contigo.**</li>
+                        <li>**2. Preparación y Toma de Impresión:** Se agenda la cita para preparar el diente y tomar la impresión que se enviará al laboratorio.</li>
+                        <li>**3. Fabricación:** El laboratorio fabrica tu incrustación de cerámica (con la cooperación ya realizada).</li>
+                        <li>**4. Cementación y Ajustes:** Colocación y cementación final de la incrustación y citas de seguimiento para verificar la oclusión.</li>
+                    </ol>
+                    <div class="mt-4 p-3 bg-red-50 text-danger rounded-lg font-semibold border border-danger/50">
+                        ⚠️ **IMPORTANTE:** Citas disponibles ÚNICAMENTE en los días y horarios clínicos del alumno.
+                    </div>
+                </div>
+
+                <!-- NOTA DE COSTOS -->
+                <div class="p-4 bg-secondary/10 border-l-4 border-secondary rounded-lg text-gray-800 font-semibold">
+                    <p>
+                        **¡Aclaración Importante!** Los costos de "Cooperación Mínima" en la tabla son estimados y de referencia. Por favor, pregunta directamente al estudiante por el costo final al momento de la valoración para tu completa conformidad.
+                    </p>
+                </div>
+
+                <!-- TABLA DE COSTOS - INCRUSTACIONES -->
+                <div class="border-l-4 border-secondary pl-4 pt-4">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Incrustaciones Dentales (Enfoque en Cerámica)</h3>
+                    <div class="overflow-x-auto rounded-lg shadow-md">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-secondary text-white">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">Tratamiento</th>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">Precio Mercado (MXN)</th>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider bg-primary/80">Tu Cooperación Mínima*</th>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">Comentarios</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">Incrustación Cerámica</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">$4,000 – $6,100</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm font-bold text-primary">$2,000 – $3,000</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">Depende del desgaste del diente.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="mt-3 text-xs text-gray-500 italic">*La cooperación cubre el costo de materiales de laboratorio, no genera lucro.</p>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <p class="text-lg text-gray-700 mb-4 font-semibold">
+                    Recupera <span class="text-red-600 font-extrabold uppercase">TU SONRISA</span> con un Regalo para Mejorar tu Salud.
+                </p>
+                <a href="index.html#contacto" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-lg font-semibold rounded-full shadow-lg text-white bg-secondary hover:bg-emerald-600 transition duration-300 transform hover:scale-105">
+                    Agenda tu Valoración
+                </a>
+            </div>
+            
+            <p class="mt-8 text-sm text-center text-gray-500">
+                <a href="index.html#servicios" class="text-primary hover:text-indigo-700 font-medium">&larr; Volver a Servicios</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

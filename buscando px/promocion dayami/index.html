@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>FARMACIA DAYAMI — Información</title>
+  <meta name="description" content="Horarios, ubicación, preguntas frecuentes y contacto de FARMACIA DAYAMI." />
+  <meta name="theme-color" content="#1e3a8a" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --ink:#0b0f1a; --muted:#64748b;
+      --blue:#1e3a8a; --blue-500:#3b82f6;
+      --red:#e11d48; --green:#16a34a;
+    }
+    html{ scroll-behavior:smooth; }
+    body{
+      background:
+        radial-gradient(900px 500px at -10% -10%, rgba(59,130,246,.12), transparent 50%),
+        radial-gradient(900px 500px at 110% -10%, rgba(225,29,72,.10), transparent 50%),
+        linear-gradient(180deg,#f8fafc 0%, #ffffff 45%, #eef2ff 100%);
+      color:var(--ink);
+    }
+    .glass{ background:rgba(255,255,255,.9); backdrop-filter: blur(10px);
+            border:1px solid rgba(2,6,23,.08); border-radius:1.25rem; box-shadow:0 12px 34px rgba(2,6,23,.12); }
+    .safe{ padding-left:max(16px,env(safe-area-inset-left)); padding-right:max(16px,env(safe-area-inset-right)); }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.6rem; padding:.9rem 1.1rem; border-radius:1rem; font-weight:900; }
+    .btn-pri{ background-image:linear-gradient(135deg, var(--blue-500), var(--blue)); color:#fff; box-shadow:0 18px 38px rgba(59,130,246,.30); }
+    .btn-ghost{ border:1px solid #e2e8f0; background:#fff; color:var(--blue); font-weight:800; }
+    .chip{ font-size:.74rem; padding:.22rem .6rem; border-radius:999px; color:#fff; font-weight:800; white-space:nowrap }
+    .chip-blue{ background:var(--blue) } .chip-green{ background:var(--green) } .chip-red{ background:var(--red) }
+    .hover-card{ transition:transform .12s ease, box-shadow .12s ease; }
+    .hover-card:hover{ transform: translateY(-2px); box-shadow:0 18px 42px rgba(2,6,23,.14); }
+
+    /* ===== Tabla estilo escuela: horas izq, días arriba ===== */
+    .school{ width:100%; border-collapse:separate; border-spacing:0; overflow:auto; border-radius:1rem; border:1px solid #e2e8f0; }
+    .school th, .school td{ padding:.8rem; border-bottom:1px solid #e2e8f0; text-align:center; font-size:.95rem }
+    .school tr:last-child td{ border-bottom:none }
+    .school thead th{ background:#f8fafc; font-weight:900; position:sticky; top:0; }
+    .timecell{ text-align:left; font-weight:900; white-space:nowrap; }
+    .slot{ border-radius:.6rem; color:#fff; font-weight:900; letter-spacing:.01em; box-shadow:inset 0 0 0 1px rgba(2,6,23,.06); }
+    .slot-blue{ background: color-mix(in oklab, var(--blue) 85%, white); }
+    .slot-green{ background: color-mix(in oklab, var(--green) 85%, white); }
+    .slot-both{ background: linear-gradient(135deg, color-mix(in oklab, var(--blue) 85%, white), color-mix(in oklab, var(--green) 85%, white)); }
+    .slot-red{ background: color-mix(in oklab, var(--red) 82%, white); }
+    .legend > span{ display:inline-flex; align-items:center; gap:.4rem; margin-right:.75rem; font-size:.85rem }
+    .legend-dot{ width:.7rem; height:.7rem; border-radius:50% }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-30 backdrop-blur bg-white/70 border-b border-slate-200/60">
+    <div class="max-w-6xl mx-auto safe px-3 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3">
+        <img src="imagen/logo-dayami.png" alt="Logo FARMACIA DAYAMI"
+             class="w-11 h-11 rounded-xl border border-slate-200 bg-white object-contain shadow-sm" />
+        <span class="hidden sm:block font-extrabold tracking-tight">FARMACIA DAYAMI</span>
+      </a>
+      <nav class="flex items-center gap-2">
+        <a href="#horario" class="btn btn-ghost text-sm">🕒 Horario</a>
+        <a href="#mapa" class="btn btn-ghost text-sm">📍 Ubicación</a>
+        <a href="#faq" class="btn btn-ghost text-sm">❓ Preguntas frecuentes</a>
+        <a href="#familia" class="btn btn-ghost text-sm">💙 Familia Dayami</a>
+        <a href="#contacto" class="btn btn-pri text-sm">💬 WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <a id="top"></a>
+  <section class="max-w-6xl mx-auto safe px-4 pt-8">
+    <div class="glass p-6 md:p-9 grid md:grid-cols-[1.2fr_.8fr] gap-6">
+      <div>
+        <h1 class="text-3xl md:text-5xl font-black leading-tight tracking-tight text-slate-900">
+          💊 Atención cercana, profesional y rápida.
+        </h1>
+        <p class="mt-3 md:text-lg text-[var(--muted)]">
+          ✅ Conoce nuestro <b>horario</b>, <b>ubicación</b> y <b>resuelve dudas</b>.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <a id="ctaWA" href="#" class="btn btn-pri">💬 Escribir por WhatsApp</a>
+          <a href="#faq" class="btn btn-ghost">❓ Preguntas frecuentes</a>
+          <a href="#mapa" class="btn btn-ghost">📍 ¿Cómo llegar?</a>
+        </div>
+      </div>
+      <div class="grid place-items-center">
+        <img src="imagen/logo-dayami.png" alt="FARMACIA DAYAMI"
+             class="w-56 h-56 md:w-64 md:h-64 object-contain rounded-2xl bg-white border border-slate-200 shadow-lg" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESOS / FAMILIA + PROMOS -->
+  <section class="max-w-6xl mx-auto safe px-4 py-6" id="familia">
+    <div class="grid md:grid-cols-2 gap-4">
+      <a href="familiadayami.html" class="glass p-5 hover-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-lg font-extrabold">💙 Sé parte de la <u>Familia Dayami</u></h3>
+            <p class="text-sm text-[var(--muted)]">Beneficios exclusivos y avisos pensados para ti. 🔔</p>
+          </div>
+          <span class="chip chip-blue">Entrar</span>
+        </div>
+      </a>
+      <a href="https://chat.whatsapp.com/BOPT8yvZe257OP6ToSGNYx" target="_blank" rel="noopener" class="glass p-5 hover-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-lg font-extrabold">💥 Conoce nuestras promociones</h3>
+            <p class="text-sm text-[var(--muted)]">Únete al grupo y recibe ofertas primero. 🛎️</p>
+          </div>
+          <span class="chip chip-blue">Unirme</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- HORARIO (tipo escuela) -->
+  <section id="horario" class="max-w-6xl mx-auto safe px-4 pb-8">
+    <div class="glass p-6 hover-card">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <h2 class="text-2xl font-extrabold tracking-tight">🕒 Horario de Farmacia y Consulta</h2>
+        <div class="legend">
+          <span><span class="legend-dot" style="background:#1e3a8a"></span> Farmacia</span>
+          <span><span class="legend-dot" style="background:#16a34a"></span> Consulta</span>
+          <span><span class="legend-dot" style="background:linear-gradient(135deg,#1e3a8a,#16a34a)"></span> Ambos</span>
+          <span><span class="legend-dot" style="background:#e11d48"></span> Cerrado</span>
+        </div>
+      </div>
+
+      <div class="mt-4 overflow-auto">
+        <!-- Tabla estática para asegurar que siempre se muestre -->
+        <table class="school min-w-[860px]">
+          <thead>
+            <tr>
+              <th>Hora</th>
+              <th>Lunes</th>
+              <th>Martes</th>
+              <th>Miércoles</th>
+              <th>Jueves</th>
+              <th>Viernes</th>
+              <th>Sábado</th>
+              <th>Domingo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 9–11 -->
+            <tr>
+              <td class="timecell">9&nbsp;AM</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-blue">Farmacia 🛒</td>
+            </tr>
+            <!-- 11–1 -->
+            <tr>
+              <td class="timecell">11&nbsp;AM</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-blue">Farmacia 🛒</td>
+            </tr>
+            <!-- 1–3 -->
+            <tr>
+              <td class="timecell">1&nbsp;PM</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-blue">Farmacia 🛒</td>
+            </tr>
+            <!-- 3–5 -->
+            <tr>
+              <td class="timecell">3&nbsp;PM</td>
+              <td class="slot slot-blue">Farmacia 🛒</td>
+              <td class="slot slot-blue">Farmacia 🛒</td>
+              <td class="slot slot-blue">Farmacia 🛒</td>
+              <td class="slot slot-blue">Farmacia 🛒</td>
+              <td class="slot slot-blue">Farmacia 🛒</td>
+              <td class="slot slot-blue">Farmacia 🛒</td>
+              <td class="slot slot-red">Cerrado 🔴</td>
+            </tr>
+            <!-- 5–7 -->
+            <tr>
+              <td class="timecell">5&nbsp;PM</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-red">Cerrado 🔴</td>
+            </tr>
+            <!-- 7–9 -->
+            <tr>
+              <td class="timecell">7&nbsp;PM</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-both">Ambos ✅</td>
+              <td class="slot slot-green">Consulta 🩺</td>
+              <td class="slot slot-red">Cerrado 🔴</td>
+            </tr>
+            <!-- 9 PM en adelante -->
+            <tr>
+              <td class="timecell">9&nbsp;PM</td>
+              <td class="slot slot-red">Cerrado 🔴</td>
+              <td class="slot slot-red">Cerrado 🔴</td>
+              <td class="slot slot-red">Cerrado 🔴</td>
+              <td class="slot slot-red">Cerrado 🔴</td>
+              <td class="slot slot-red">Cerrado 🔴</td>
+              <td class="slot slot-red">Cerrado 🔴</td>
+              <td class="slot slot-red">Cerrado 🔴</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-[11px] text-slate-600 mt-2">
+        • L–V: Farmacia 9:00–21:00 aprox. • Sábado: Farmacia 9:00–19:00 aprox. • Domingo: Farmacia 9:00–14:00. <br>
+        • Consulta: 10:00–14:30 y 17:00–20:00 (L–S). Domingo sin consulta.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAPA -->
+  <section id="mapa" class="max-w-6xl mx-auto safe px-4 pb-8">
+    <div class="glass overflow-hidden hover-card">
+      <iframe
+        title="Ubicación FARMACIA DAYAMI — Mariano Matamoros 16, El Inguambal"
+        class="w-full aspect-[4/3]"
+        src="https://www.google.com/maps?q=Mariano%20Matamoros%2016,%20El%20Inguambal&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="p-4 flex items-center justify-between flex-wrap gap-2">
+        <div class="text-sm text-[var(--muted)]">📍 Dirección: <b>Mariano Matamoros #16, Col. El Inguambal</b></div>
+        <div class="flex gap-2">
+          <a id="mapsLink" target="_blank" rel="noopener" class="btn btn-ghost text-sm">🚗 ¿Cómo llegar?</a>
+          <button id="copyAddr" class="btn btn-ghost text-sm">📋 Copiar dirección</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES -->
+  <section id="faq" class="max-w-6xl mx-auto safe px-4 pb-12">
+    <div class="glass p-6 hover-card">
+      <h2 class="text-2xl font-extrabold tracking-tight">❓ Preguntas frecuentes</h2>
+
+      <details class="mt-3 border rounded-lg p-3">
+        <summary class="cursor-pointer font-semibold">¿Hacen entregas a domicilio?</summary>
+        <p class="mt-2 text-sm text-[var(--muted)]">Sí en zona cercana. Consulta costo y cobertura por WhatsApp.</p>
+      </details>
+
+      <details class="mt-3 border rounded-lg p-3">
+        <summary class="cursor-pointer font-semibold">¿Qué métodos de pago aceptan?</summary>
+        <p class="mt-2 text-sm text-[var(--muted)]">Efectivo, tarjeta y transferencia.</p>
+      </details>
+
+      <details class="mt-3 border rounded-lg p-3">
+        <summary class="cursor-pointer font-semibold">¿Pueden conseguir un medicamento?</summary>
+        <p class="mt-2 text-sm text-[var(--muted)]">Sí, según disponibilidad. Antibióticos/controlados requieren receta vigente.</p>
+      </details>
+
+      <details class="mt-3 border rounded-lg p-3">
+        <summary class="cursor-pointer font-semibold">¿Puedo apartar un producto?</summary>
+        <p class="mt-2 text-sm text-[var(--muted)]">Sí, te lo guardamos por tiempo limitado con anticipo.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="max-w-6xl mx-auto safe px-4 pb-16">
+    <div class="glass p-6 grid md:grid-cols-2 gap-6 hover-card">
+      <div>
+        <h2 class="text-2xl font-extrabold tracking-tight">📞 Contacto</h2>
+        <p class="text-[var(--muted)] text-sm mt-1">Envíanos un WhatsApp o correo. No compartas datos sensibles.</p>
+
+        <form id="formWA" class="mt-3 grid gap-2">
+          <input id="pxNombre" class="border rounded-lg px-3 py-2" placeholder="Tu nombre" />
+          <textarea id="pxMensaje" rows="4" class="border rounded-lg px-3 py-2" placeholder="Tu mensaje"></textarea>
+          <div class="flex gap-2">
+            <button type="submit" class="btn btn-pri">💬 WhatsApp</button>
+            <a id="btnMail" class="btn btn-ghost" href="#">✉️ Correo</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="grid gap-3">
+        <div class="border rounded-xl p-4">
+          <div class="text-sm text-[var(--muted)]">Teléfono (toca “Copiar”)</div>
+          <div class="flex items-center gap-3">
+            <div id="showPhone" class="text-xl font-extrabold select-all">(452) 156-7129</div>
+            <button id="copyPhone" class="btn btn-ghost text-sm">📋 Copiar <span class="text-slate-400 ml-1">4521567129</span></button>
+          </div>
+        </div>
+        <div class="border rounded-xl p-4">
+          <div class="text-sm text-[var(--muted)]">Correo</div>
+          <div class="text-xl font-extrabold">farmaciadayami@gmail.com</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t bg-white/70">
+    <div class="max-w-6xl mx-auto safe px-4 py-5 text-sm text-[var(--muted)] flex items-center justify-between">
+      <span>© <span id="year"></span> FARMACIA DAYAMI</span>
+      <div class="flex gap-3">
+        <a href="#horario" class="underline/30 hover:underline">🕒 Horarios</a>
+        <a href="familiadayami.html" class="underline/30 hover:underline">💙 Familia Dayami</a>
+        <a id="footerWA" class="underline/30 hover:underline" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ======== WhatsApp fijo ========
+    const ADMIN_PHONE = "4521567129";
+    const waLink = (t) => `https://wa.me/52${ADMIN_PHONE}?text=${encodeURIComponent(t)}`;
+
+    document.getElementById("ctaWA").href = waLink("Hola, me gustaría más información de FARMACIA DAYAMI.");
+    document.getElementById("footerWA").href = waLink("Hola, quisiera hacer una consulta.");
+
+    // Copiar teléfono y dirección
+    document.getElementById("copyPhone").addEventListener("click", async ()=>{
+      try{ await navigator.clipboard.writeText("4521567129"); alert("Número copiado ✅"); }catch{ alert("Copia manual: 4521567129"); }
+    });
+    document.getElementById("mapsLink").href = "https://www.google.com/maps/search/?api=1&query=Mariano%20Matamoros%2016%2C%20El%20Inguambal";
+    document.getElementById("copyAddr").addEventListener("click", async ()=>{
+      const txt = "Mariano Matamoros 16, Col. El Inguambal";
+      try{ await navigator.clipboard.writeText(txt); alert("Dirección copiada ✅"); }catch{ alert("Copia manual: "+txt); }
+    });
+
+    // Contacto por correo
+    const formWA = document.getElementById("formWA");
+    const pxNombre = document.getElementById("pxNombre");
+    const pxMensaje = document.getElementById("pxMensaje");
+    const btnMail = document.getElementById("btnMail");
+    const buildMsg = ()=> {
+      const n = (pxNombre.value||"").trim();
+      const m = (pxMensaje.value||"").trim();
+      const base = n ? `Hola, soy ${n}. ` : "Hola. ";
+      return base + (m || "Me gustaría hacer una consulta.");
+    };
+    formWA.addEventListener("submit",(e)=>{ e.preventDefault(); window.open(waLink(buildMsg()), "_blank"); });
+    btnMail.addEventListener("click",(e)=>{ e.preventDefault();
+      const link = `mailto:${encodeURIComponent("farmaciadayami@gmail.com")}?subject=${encodeURIComponent("Consulta — FARMACIA DAYAMI")}&body=${encodeURIComponent(buildMsg())}`;
+      window.location.href = link;
+    });
+
+    // Año
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
