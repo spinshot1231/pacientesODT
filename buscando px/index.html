@@ -57,8 +57,8 @@
     }
 
     /* Pretty scrollbar (solo desktop) */
-    ::-webkit-scrollbar{width:10px} 
-    ::-webkit-scrollbar-track{background:#0b1220} 
+    ::-webkit-scrollbar{width:10px}
+    ::-webkit-scrollbar-track{background:#0b1220}
     ::-webkit-scrollbar-thumb{background:#334155;border-radius:8px}
     ::-webkit-scrollbar-thumb:hover{background:#475569}
   </style>
@@ -161,6 +161,36 @@
       </div>
     </section>
 
+    <!-- BANNER: Farmacia DAYAMI (aliado) -->
+    <section id="aliado" class="py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative glass border-t-8 border-secondary rounded-2xl shadow-glass overflow-hidden">
+          <div class="pointer-events-none absolute -top-24 -left-24 w-[28rem] h-[28rem] rounded-full bg-secondary/10 blur-3xl"></div>
+          <div class="pointer-events-none absolute -bottom-24 -right-24 w-[28rem] h-[28rem] rounded-full bg-primary/10 blur-3xl"></div>
+
+          <div class="relative z-10 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+              <p class="inline-flex items-center gap-2 text-xs uppercase tracking-wide text-slate-300">
+                <span class="w-2 h-2 rounded-full bg-secondary"></span> Beneficio exclusivo para pacientes
+              </p>
+              <h3 class="mt-2 text-2xl md:text-3xl font-bold text-white">
+                Aliado de medicamentos: <span class="text-secondary">Farmacia DAYAMI</span>
+              </h3>
+              <p class="mt-2 text-slate-300 max-w-2xl">
+                Obtén <span class="text-white font-semibold">descuentos</span> en medicamentos post-operatorios y material indicado por tu especialista.
+              </p>
+            </div>
+
+            <a href="https://dayami.netlify.app" target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary/90 hover:bg-primary text-white font-semibold shadow-glow transition transform hover:scale-[1.03]">
+              Visitar Farmacia DAYAMI
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h6m0 0v6m0-6L10 16"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SERVICIOS -->
     <section id="servicios" class="py-20 sm:py-28">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -170,7 +200,6 @@
         </p>
 
         <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Card -->
           <a href="restauracion.html" class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(79,70,229,.5)] transition border-t-4 border-secondary hover:-translate-y-1">
             <div class="relative overflow-hidden rounded-xl">
               <img src="image/restauracion.jpg" alt="Restauración y Prevención" class="card-image w-full object-cover"
@@ -271,7 +300,6 @@
           <div class="mt-12 lg:mt-0 relative animate-float-in">
             <div id="image-carousel" class="relative w-full"></div>
 
-            <!-- botones (IDs intactos) -->
             <button id="prev-btn" class="hidden absolute top-1/2 left-4 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full shadow-lg ring-1 ring-white/30 backdrop-blur-xs transition" aria-label="Anterior">
               <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
             </button>
@@ -308,60 +336,92 @@
       </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- CONTACTO (PROFESIONAL Y RESPONSIVE) -->
     <section id="contacto" class="py-20 sm:py-28">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">¿Listo para una Sonrisa saludable?</h2>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">¿Listo para una sonrisa saludable?</h2>
           <p class="mt-3 text-xl text-slate-300">Agenda tu primera consulta de valoración hoy mismo. ¡El primer paso es gratuito!</p>
         </div>
 
-        <div class="mt-12 max-w-lg mx-auto glass p-8 rounded-2xl shadow-glass border-t-8 border-secondary">
-          <!-- WhatsApp -->
-          <div class="mb-8 bg-black/20 p-4 rounded-xl border border-white/10">
-            <p class="text-sm font-semibold text-slate-200 mb-2">Contáctanos vía WhatsApp para agendar:</p>
-            <div class="flex gap-2">
-              <input type="text" id="phone-number-copy" value="4522195520" readonly class="flex-grow px-3 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-lg font-mono text-slate-200">
-              <button onclick="copyPhoneNumber()" class="bg-primary/90 hover:bg-primary text-white text-sm font-medium py-2 px-4 rounded-lg transition active:scale-95">Copiar</button>
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Tarjetas de contacto -->
+          <div class="space-y-6">
+            <div class="glass p-5 rounded-2xl border border-white/10">
+              <div class="flex items-center justify-between">
+                <p class="text-sm font-semibold text-slate-200">WhatsApp para agendar</p>
+                <span class="text-xs text-white/70 bg-secondary/20 border border-secondary/30 px-2 py-0.5 rounded-full">Respuesta rápida</span>
+              </div>
+              <div class="mt-3 flex gap-2">
+                <input type="text" id="phone-number-copy" value="4522195520" readonly
+                       class="flex-grow px-3 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-lg font-mono text-slate-200">
+                <button onclick="copyPhoneNumber()"
+                        class="px-4 py-2 rounded-lg bg-primary/90 hover:bg-primary text-white text-sm font-medium shadow-glow transition active:scale-95">
+                  Copiar
+                </button>
+              </div>
+              <p id="copy-status" class="mt-2 text-sm text-center text-secondary font-medium hidden">¡Número de WhatsApp copiado!</p>
             </div>
-            <p id="copy-status" class="mt-2 text-sm text-center text-secondary font-medium hidden">¡Número de WhatsApp copiado!</p>
+
+            <div class="glass p-5 rounded-2xl border border-white/10">
+              <p class="text-sm font-semibold text-slate-200">Número para llamadas (copiar y pegar)</p>
+              <div class="mt-3 flex gap-2">
+                <input type="text" id="call-number-copy" value="4522195520" readonly
+                       class="flex-grow px-3 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-lg font-mono text-slate-200">
+                <button onclick="copyCallNumber()"
+                        class="px-4 py-2 rounded-lg bg-primary/90 hover:bg-primary text-white text-sm font-medium shadow-glow transition active:scale-95">
+                  Copiar
+                </button>
+              </div>
+              <p id="call-copy-status" class="mt-2 text-sm text-center text-secondary font-medium hidden">¡Número de llamadas copiado!</p>
+            </div>
+
+            <div class="glass p-5 rounded-2xl border border-white/10">
+              <p class="text-sm font-semibold text-white">Recomendación</p>
+              <p class="mt-2 text-slate-300 text-sm">
+                Ten a la mano tus horarios disponibles y una foto de tu identificación para agilizar la cita.
+              </p>
+              <p class="mt-2 text-xs text-slate-400">
+                Cuidamos tus datos. Sólo se usan para agendar y dar seguimiento clínico.
+              </p>
+            </div>
           </div>
 
-          <!-- Llamadas -->
-          <div class="mb-8 bg-black/20 p-4 rounded-xl border border-white/10">
-            <p class="text-sm font-semibold text-slate-200 mb-2">Número para llamadas (copiar y pegar):</p>
-            <div class="flex gap-2">
-              <input type="text" id="call-number-copy" value="4522195520" readonly class="flex-grow px-3 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-lg font-mono text-slate-200">
-              <button onclick="copyCallNumber()" class="bg-primary/90 hover:bg-primary text-white text-sm font-medium py-2 px-4 rounded-lg transition active:scale-95">Copiar</button>
-            </div>
-            <p id="call-copy-status" class="mt-2 text-sm text-center text-secondary font-medium hidden">¡Número de llamadas copiado!</p>
-          </div>
+          <!-- Formulario (IDs intactos) -->
+          <div class="glass p-8 rounded-2xl shadow-glass border-t-8 border-secondary">
+            <form id="appointment-form" action="#" method="POST" class="space-y-5">
+              <div>
+                <label class="block text-sm font-medium text-slate-200">Nombre Completo</label>
+                <input type="text" id="name-form" name="name" required
+                       class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-200">Teléfono (WhatsApp)</label>
+                <input type="tel" id="phone-form" name="phone" required value="4522195520"
+                       class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-200">Correo Electrónico</label>
+                <input type="email" id="email" name="email"
+                       class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-200">Motivo de la Cita</label>
+                <textarea id="message" name="message" rows="4" required
+                          class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary"
+                          placeholder="Cuéntanos brevemente tu necesidad (dolor, restauración, prótesis, etc.)"></textarea>
+              </div>
 
-          <!-- Formulario -->
-          <form id="appointment-form" action="#" method="POST" class="space-y-5">
-            <div>
-              <label class="block text-sm font-medium text-slate-200">Nombre Completo</label>
-              <input type="text" id="name-form" name="name" required class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary">
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-200">Teléfono (WhatsApp)</label>
-              <input type="tel" id="phone-form" name="phone" required class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary" value="4522195520">
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-200">Correo Electrónico</label>
-              <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary">
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-200">Motivo de la Cita</label>
-              <textarea id="message" name="message" rows="3" required class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary"></textarea>
-            </div>
+              <button type="submit"
+                      class="w-full justify-center py-3 px-4 rounded-full shadow-glow text-lg font-semibold text-white bg-secondary hover:bg-emerald-600 transition transform hover:scale-[1.01]">
+                Solicitar Cita
+              </button>
+            </form>
 
-            <button type="submit" class="w-full justify-center py-3 px-4 rounded-full shadow-glow text-lg font-semibold text-white bg-secondary hover:bg-emerald-600 transition transform hover:scale-[1.01]">Solicitar Cita</button>
-          </form>
-
-          <div id="success-message" class="hidden mt-6 bg-emerald-900/30 border-l-4 border-emerald-500 text-emerald-200 p-4 rounded-lg" role="alert">
-            <p class="font-bold text-white">¡Solicitud Enviada!</p>
-            <p>Gracias por contactarnos. Pronto nos comunicaremos contigo al 452 219 5520 para confirmar tu cita.</p>
+            <div id="success-message" class="hidden mt-6 bg-emerald-900/30 border-l-4 border-emerald-500 text-emerald-200 p-4 rounded-lg" role="alert">
+              <p class="font-bold text-white">¡Solicitud Enviada!</p>
+              <p>Gracias por contactarnos. Pronto nos comunicaremos contigo al 452 219 5520 para confirmar tu cita.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -407,11 +467,11 @@
     </div>
   </footer>
 
-  <!-- JS (IDs y lógica intactos) -->
+  <!-- JS -->
   <script>
     // Modal
-    function showModal() { document.getElementById('alert-modal').classList.remove('hidden'); document.getElementById('alert-modal').classList.add('flex'); }
-    function closeModal() { document.getElementById('alert-modal').classList.add('hidden'); document.getElementById('alert-modal').classList.remove('flex'); }
+    function showModal() { const m=document.getElementById('alert-modal'); m.classList.remove('hidden'); m.classList.add('flex'); }
+    function closeModal() { const m=document.getElementById('alert-modal'); m.classList.add('hidden'); m.classList.remove('flex'); }
     window.showModal = showModal;
 
     // Menú móvil
@@ -444,7 +504,7 @@
     }
     window.copyCallNumber = copyCallNumber;
 
-    // Formulario
+    // Formulario (simulado)
     document.getElementById('appointment-form').addEventListener('submit', function (e) {
       e.preventDefault();
       this.classList.add('hidden');
@@ -456,7 +516,7 @@
       }, 5000);
     });
 
-    // Carrusel con caption (IDs intactos)
+    // Carrusel (IDs intactos)
     const carouselContainer = document.getElementById('image-carousel');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
