@@ -1,460 +1,521 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PractiDent | Recupera tu Sonrisa con un Regalo para tu Salud</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PractiDent | Recupera tu Sonrisa con un Regalo para tu Salud</title>
+  <link rel="icon" type="image/png" href="image/titulo.png" />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#4f46e5',
-                        'secondary': '#10b981',
-                        'accent': '#fef3c7',
-                        'danger': '#dc2626',
-                        'dark-bg': '#1f2937',
-                    },
-                    fontFamily: {
-                        sans: ["Inter", "sans-serif"],
-                    },
-                },
-            },
-        };
-    </script>
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-        html { scroll-behavior: smooth; }
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4f46e5',          // Indigo
+            secondary: '#10b981',        // Emerald
+            accent: '#fef3c7',           // Soft yellow
+            danger: '#dc2626',
+            'bg-1': '#0b1220',           // Deep navy
+            'bg-2': '#0f172a',           // Slate-900
+            'card': '#0b1324',           // Card bg
+          },
+          boxShadow: {
+            glow: '0 10px 25px -5px rgba(79,70,229,.45), 0 0 0 1px rgba(99,102,241,.2) inset',
+            glass: '0 15px 40px -10px rgba(0,0,0,.35)',
+          },
+          backdropBlur: {
+            xs: '2px',
+          },
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+          keyframes: {
+            'float-in': { '0%': {opacity:0, transform:'translateY(12px) scale(.98)'}, '100%': {opacity:1, transform:'translateY(0) scale(1)'} },
+            'pulse-soft': { '0%,100%': {boxShadow:'0 0 0 0 rgba(16,185,129,.0)'}, '50%': {boxShadow:'0 0 0 10px rgba(16,185,129,.10)'} }
+          },
+          animation: {
+            'float-in': 'float-in .7s ease-out both',
+            'pulse-soft': 'pulse-soft 2.5s ease-in-out infinite',
+          },
+          backgroundImage: {
+            'mesh': 'radial-gradient(60rem 30rem at -10% -10%, rgba(79,70,229,.25), transparent 45%), radial-gradient(50rem 25rem at 110% 10%, rgba(16,185,129,.18), transparent 45%), radial-gradient(40rem 20rem at 50% 120%, rgba(59,130,246,.18), transparent 45%)',
+          }
+        }
+      }
+    }
+  </script>
 
-        .card-image { height: 12rem; }
-        .cta-shadow { box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2); }
-        .modal { position: fixed; inset: 0; display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,.5); z-index: 1000; }
-    </style>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+    html { scroll-behavior: smooth; }
+
+    /* Glass cards */
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Pretty scrollbar (solo desktop) */
+    ::-webkit-scrollbar{width:10px} 
+    ::-webkit-scrollbar-track{background:#0b1220} 
+    ::-webkit-scrollbar-thumb{background:#334155;border-radius:8px}
+    ::-webkit-scrollbar-thumb:hover{background:#475569}
+  </style>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50">
-    <!-- MODAL: Servicio no disponible -->
-    <div id="alert-modal" class="modal hidden">
-        <div class="bg-white p-6 rounded-xl shadow-2xl max-w-sm w-full text-center border-t-4 border-danger">
-            <svg class="w-12 h-12 text-danger mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.398 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            <p class="text-xl font-bold text-gray-900 mb-2">Servicio No Disponible</p>
-            <p class="text-gray-600">Este tratamiento no forma parte del programa de práctica supervisada <strong>actualmente</strong>.</p>
-            <button onclick="closeModal()" class="mt-4 bg-primary text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition">Entendido</button>
-        </div>
+
+<body class="font-sans text-slate-100 bg-bg-1 bg-mesh">
+  <!-- MODAL -->
+  <div id="alert-modal" class="fixed inset-0 hidden z-[1000] items-center justify-center bg-black/50">
+    <div class="glass p-6 rounded-2xl shadow-glass max-w-sm w-full text-center border-t-4 border-danger animate-float-in">
+      <svg class="w-12 h-12 text-danger mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.398 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      <p class="text-xl font-bold text-white mb-1">Servicio No Disponible</p>
+      <p class="text-slate-300">Este tratamiento no forma parte del programa de práctica supervisada <strong>actualmente</strong>.</p>
+      <button onclick="closeModal()" class="mt-5 bg-primary/90 hover:bg-primary text-white py-2 px-4 rounded-full transition">Entendido</button>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 supports-[backdrop-filter]:backdrop-blur-md bg-slate-900/55 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <img src="image/titulo.png" alt="PractiDent Logo" class="h-9 w-9 rounded-md object-contain ring-1 ring-white/15"
+               onerror="this.onerror=null;this.src='https://placehold.co/64x64/4f46e5/ffffff?text=P'"/>
+          <span class="text-xl font-extrabold text-white transition">
+            <span class="text-secondary">Practi</span>Dent
+          </span>
+        </a>
+
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-label="Abrir menú">
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="#inicio" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 font-medium">Inicio</a>
+          <a href="#servicios" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 font-medium">Servicios</a>
+          <a href="#nosotros" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 font-medium">Equipo</a>
+          <a href="#terminos" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 font-medium">Términos</a>
+          <a href="#contacto" class="ml-2 inline-flex items-center justify-center px-4 py-2 text-sm font-semibold rounded-full shadow-glow text-white bg-secondary hover:bg-emerald-600 transition transform hover:scale-[1.03]">Agenda tu Cita</a>
+        </nav>
+      </div>
     </div>
 
-    <!-- HEADER -->
-    <header class="sticky top-0 z-50 bg-white shadow-lg">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- LOGO -->
-                <a href="#inicio" class="flex items-center gap-3 group">
-                    <img src="practident.png" alt="PractiDent Logo" class="h-8 w-8 rounded-md object-contain"
-                         onerror="this.onerror=null;this.src='https://placehold.co/64x64/4f46e5/ffffff?text=P'" />
-                    <span class="text-xl font-extrabold text-primary group-hover:text-indigo-800 transition"><span class="text-secondary">Practi</span>Dent</span>
-                </a>
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-slate-900/70 supports-[backdrop-filter]:backdrop-blur-md">
+      <div class="px-4 py-3 space-y-2">
+        <a href="#inicio" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-white/10">Inicio</a>
+        <a href="#servicios" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-white/10">Servicios</a>
+        <a href="#nosotros" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-white/10">Equipo</a>
+        <a href="#terminos" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-white/10">Términos</a>
+        <a href="#contacto" class="block w-full text-center mt-2 px-3 py-2 rounded-full text-base font-semibold text-white bg-secondary hover:bg-emerald-600">Agenda tu Cita</a>
+      </div>
+    </div>
+  </header>
 
-                <!-- Botón Menú móvil -->
-                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-label="Abrir menú">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-                </button>
+  <main>
+    <!-- HERO -->
+    <section id="inicio" class="relative pt-20 pb-28 sm:pt-28 sm:pb-36 overflow-hidden">
+      <!-- decor -->
+      <div class="pointer-events-none absolute -top-32 -left-24 size-[32rem] rounded-full bg-primary/20 blur-3xl"></div>
+      <div class="pointer-events-none absolute -bottom-24 -right-24 size-[28rem] rounded-full bg-secondary/20 blur-3xl"></div>
 
-                <!-- Menú Desktop -->
-                <nav class="hidden md:flex space-x-6 lg:space-x-8 items-center">
-                    <a href="#inicio" class="text-gray-600 hover:text-primary transition duration-300 font-medium">Inicio</a>
-                    <a href="#servicios" class="text-gray-600 hover:text-primary transition duration-300 font-medium">Servicios</a>
-                    <a href="#nosotros" class="text-gray-600 hover:text-primary transition duration-300 font-medium">Equipo</a>
-                    <a href="#terminos" class="text-gray-600 hover:text-primary transition duration-300 font-medium">Términos</a>
-                    <a href="#contacto" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-semibold rounded-full shadow-lg text-white bg-secondary hover:bg-emerald-600 transition duration-300 transform hover:scale-105">Agenda tu Cita</a>
-                </nav>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+          <!-- Texto -->
+          <div class="lg:col-span-6 xl:col-span-5 text-center lg:text-left animate-float-in">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs text-slate-200">
+              <span class="size-2 rounded-full bg-secondary animate-pulse-soft"></span> Atención supervisada y accesible
+            </span>
+
+            <h1 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+              Recupera <span class="text-danger uppercase drop-shadow">TU SONRISA</span>, <span class="text-primary">un Regalo para tu Salud.</span>
+            </h1>
+
+            <p class="mt-5 text-lg text-slate-300 max-w-xl mx-auto lg:mx-0">
+              <strong class="text-white">PractiDent</strong> ofrece tratamientos dentales de alta calidad a precios accesibles. Recibe atención profesional supervisada, enfocada en tu bienestar y ahorro.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href="#servicios" class="px-7 py-3 text-lg font-semibold rounded-full shadow-glow text-white bg-primary/90 hover:bg-primary transition transform hover:-translate-y-0.5 hover:scale-[1.02]">
+                Explora Servicios Gratuitos
+              </a>
+              <a href="https://wa.me/524522195520?text=Hola%2C%20PractiDent.%20Quiero%20saber%20m%C3%A1s%20sobre%20sus%20programas%20de%20pr%C3%A1ctica."
+                 target="_blank"
+                 class="px-7 py-3 text-lg font-semibold rounded-full shadow-glow text-slate-900 bg-secondary hover:bg-emerald-500 transition flex items-center justify-center transform hover:-translate-y-0.5">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2.01c-5.503 0-9.982 4.479-9.982 9.982 0 1.956.56 3.844 1.614 5.485L2.01 22.01l4.57-1.201a9.92 9.92 0 005.46 1.48c5.503 0 9.982-4.479 9.982-9.982.001-5.503-4.479-9.982-9.982-9.982zm3.332 12.87c-.198.375-.544.498-.813.528-.27.029-.481.044-.897-.132-.416-.176-1.554-.64-2.968-1.83-1.414-1.19-2.357-2.668-2.632-3.136-.274-.468-.031-.724.116-.897.147-.174.329-.416.481-.599.152-.182.201-.33.303-.559.102-.228.051-.424-.031-.599-.082-.175-.769-1.854-1.054-2.532-.285-.678-.57-.599-.769-.599-.198 0-.424-.025-.636-.025-.213 0-.559.077-.852.342-.294.265-1.116 1.096-1.116 2.668s1.148 3.09 1.301 3.32c.152.23.299.408.57.737 1.414 1.685 2.617 2.115 3.513 2.458.248.093.475.14.717.165.242.025.79.035 1.148.021.357-.013.98-.403 1.127-.793.147-.39.147-.724.102-.793-.046-.068-.198-.124-.411-.237z"/></svg>
+                Quiero saber más
+              </a>
             </div>
+          </div>
+
+          <!-- Imagen -->
+          <div class="mt-12 lg:mt-0 lg:col-span-6 xl:col-span-7 animate-float-in">
+            <div class="relative rounded-3xl overflow-hidden shadow-[0_30px_80px_-15px_rgba(0,0,0,.55)] ring-1 ring-white/10">
+              <img class="w-full h-auto object-cover" src="image/clinic.png" alt="Clínica Dental"
+                   onerror="this.onerror=null;this.src='https://placehold.co/700x500/4f46e5/ffffff?text=CL%C3%8DNICA+DENTAL'"/>
+              <div class="absolute inset-0 bg-primary/15 mix-blend-multiply"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-20 sm:py-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Nuestros Programas de Práctica Odontológica</h2>
+        <p class="mt-3 text-lg text-slate-300 max-w-4xl mx-auto">
+          Tu oportunidad de tratamientos de calidad: selecciona el servicio para conocer el proceso, los requisitos y el gran ahorro que obtienes.
+        </p>
+
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card -->
+          <a href="restauracion.html" class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(79,70,229,.5)] transition border-t-4 border-secondary hover:-translate-y-1">
+            <div class="relative overflow-hidden rounded-xl">
+              <img src="image/restauracion.jpg" alt="Restauración y Prevención" class="card-image w-full object-cover"
+                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/10b981/ffffff?text=RESTAURACI%C3%93N'"/>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">Gratuito</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-white group-hover:text-primary">Restauración y Prevención</h3>
+            <p class="mt-1 text-sm text-slate-300">¡Rellenos sin costo! Resinas, amalgamas, flúor y selladores.</p>
+            <span class="mt-4 inline-block text-secondary font-semibold text-xs border-b border-secondary">Ver el proceso &rarr;</span>
+          </a>
+
+          <a href="extraccion.html" class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,.45)] transition border-t-4 border-secondary hover:-translate-y-1">
+            <div class="relative overflow-hidden rounded-xl">
+              <img src="image/extraccion.jpg" alt="Extracciones Dentales" class="card-image w-full object-cover"
+                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/10b981/ffffff?text=EXTRACCI%C3%93N'"/>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">Gratuito</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-white group-hover:text-primary">Extracciones Dentales</h3>
+            <p class="mt-1 text-sm text-slate-300">Retiro de piezas dentales (aplica cargo mínimo por radiografía).</p>
+            <span class="mt-4 inline-block text-secondary font-semibold text-xs border-b border-secondary">Ver el proceso &rarr;</span>
+          </a>
+
+          <a href="ppf.html" class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(79,70,229,.55)] transition border-t-4 border-primary hover:-translate-y-1">
+            <div class="relative overflow-hidden rounded-xl">
+              <img src="image/protesis.jpg" alt="Prótesis" class="card-image w-full object-cover"
+                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/4f46e5/ffffff?text=PROTESIS'"/>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">Aportación mínima</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-white group-hover:text-primary">Prótesis Fijas y Removibles</h3>
+            <p class="mt-1 text-sm text-slate-300">Rehabilitación de calidad: solo cubres materiales.</p>
+            <span class="mt-4 inline-block text-primary font-semibold text-xs border-b border-primary">Ver costos &rarr;</span>
+          </a>
+
+          <a href="incrustacion.html" class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,.45)] transition border-t-4 border-secondary hover:-translate-y-1">
+            <div class="relative overflow-hidden rounded-xl">
+              <img src="image/incrustaciones.jpg" alt="Incrustaciones" class="card-image w-full object-cover"
+                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/10b981/ffffff?text=INCRUSTACIONES'"/>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">Aportación mínima</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-white group-hover:text-primary">Incrustaciones Dentales</h3>
+            <p class="mt-1 text-sm text-slate-300">Restauraciones estéticas y duraderas.</p>
+            <span class="mt-4 inline-block text-secondary font-semibold text-xs border-b border-secondary">Ver detalles &rarr;</span>
+          </a>
+
+          <div onclick="showModal()" class="group glass rounded-2xl p-5 border-t-4 border-slate-600 cursor-pointer hover:-translate-y-1 transition">
+            <div class="relative overflow-hidden rounded-xl">
+              <img src="image/endodoncia.jpg" alt="Endodoncia" class="card-image w-full object-cover opacity-60"
+                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/9ca3af/ffffff?text=ENDODONCIA'"/>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">No disponible</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-slate-300 group-hover:text-white">Endodoncia</h3>
+            <p class="mt-1 text-sm text-slate-400">Tratamiento especializado de conducto. *Clic para aviso.*</p>
+            <span class="mt-4 inline-block text-slate-400 font-semibold text-xs border-b border-slate-500">Ver información &rarr;</span>
+          </div>
+
+          <div onclick="showModal()" class="group glass rounded-2xl p-5 border-t-4 border-slate-600 cursor-pointer hover:-translate-y-1 transition">
+            <div class="relative overflow-hidden rounded-xl">
+              <img src="image/ortodoncia.jpg" alt="Ortodoncia" class="card-image w-full object-cover opacity-60"
+                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/9ca3af/ffffff?text=ORTODONCIA'"/>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">No disponible</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-slate-300 group-hover:text-white">Ortodoncia</h3>
+            <p class="mt-1 text-sm text-slate-400">Alineación dental y corrección de mordida.</p>
+            <span class="mt-4 inline-block text-slate-400 font-semibold text-xs border-b border-slate-500">Ver información &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOSOTROS + CARRUSEL -->
+    <section id="nosotros" class="py-20 sm:py-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+          <!-- Texto -->
+          <div class="animate-float-in">
+            <span class="text-secondary uppercase font-semibold text-sm">Conoce al equipo</span>
+            <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-white">Confianza en Cada Procedimiento</h2>
+            <p class="mt-4 text-slate-300 text-lg">
+              En <strong class="text-white">PractiDent</strong>, garantizamos atención segura y de vanguardia:
+            </p>
+            <ul class="mt-6 space-y-4 text-slate-200 text-lg">
+              <li class="flex items-start">
+                <svg class="h-6 w-6 flex-shrink-0 text-primary mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                <span class="ml-3"><span class="font-semibold text-white">Supervisión Médica:</span> Cada tratamiento es validado por doctores especialistas.</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-6 w-6 flex-shrink-0 text-primary mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                <span class="ml-3"><span class="font-semibold text-white">Tecnología Digital:</span> Uso de equipos modernos para diagnósticos precisos.</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="h-6 w-6 flex-shrink-0 text-primary mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                <span class="ml-3"><span class="font-semibold text-white">Máximo Ahorro:</span> Servicios gratuitos y descuentos en Farmacia DAYAMI.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Carrusel -->
+          <div class="mt-12 lg:mt-0 relative animate-float-in">
+            <div id="image-carousel" class="relative w-full"></div>
+
+            <!-- botones (IDs intactos) -->
+            <button id="prev-btn" class="hidden absolute top-1/2 left-4 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full shadow-lg ring-1 ring-white/30 backdrop-blur-xs transition" aria-label="Anterior">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button id="next-btn" class="hidden absolute top-1/2 right-4 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full shadow-lg ring-1 ring-white/30 backdrop-blur-xs transition" aria-label="Siguiente">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TÉRMINOS -->
+    <section id="terminos" class="py-20 sm:py-28">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white text-center">Compromiso y Transparencia</h2>
+        <div class="mt-8 glass p-8 rounded-2xl shadow-glass border-l-4 border-primary space-y-5">
+          <p class="text-lg font-semibold text-primary mb-2">Cláusula de Práctica y Garantía de Calidad</p>
+
+          <div class="flex items-start gap-3">
+            <span class="text-2xl font-bold text-secondary">1.</span>
+            <p class="text-slate-300"><strong class="text-white">Disponibilidad de Citas:</strong> La atención es exclusiva para casos clínicos requeridos por nuestro programa y solo dentro de los horarios clínicos establecidos.</p>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-2xl font-bold text-secondary">2.</span>
+            <p class="text-slate-300"><strong class="text-white">Calidad y Compromiso:</strong> Garantizamos el uso de los <strong>mejores materiales</strong>. La calidad depende de la colaboración y asistencia puntual del paciente a todas sus citas de control.</p>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-2xl font-bold text-secondary">3.</span>
+            <p class="text-slate-300"><strong class="text-white">Aportación Transparente:</strong> Los pagos para Prótesis e Incrustaciones <strong>cubren estrictamente laboratorio y materiales</strong>; sin fines de lucro.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-20 sm:py-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">¿Listo para una Sonrisa saludable?</h2>
+          <p class="mt-3 text-xl text-slate-300">Agenda tu primera consulta de valoración hoy mismo. ¡El primer paso es gratuito!</p>
         </div>
 
-        <!-- Menú móvil -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#inicio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Inicio</a>
-                <a href="#servicios" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Servicios</a>
-                <a href="#nosotros" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Equipo</a>
-                <a href="#terminos" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Términos</a>
-                <a href="#contacto" class="block w-full text-center mt-2 px-3 py-2 rounded-full text-base font-semibold text-white bg-secondary hover:bg-emerald-600">Agenda tu Cita</a>
+        <div class="mt-12 max-w-lg mx-auto glass p-8 rounded-2xl shadow-glass border-t-8 border-secondary">
+          <!-- WhatsApp -->
+          <div class="mb-8 bg-black/20 p-4 rounded-xl border border-white/10">
+            <p class="text-sm font-semibold text-slate-200 mb-2">Contáctanos vía WhatsApp para agendar:</p>
+            <div class="flex gap-2">
+              <input type="text" id="phone-number-copy" value="4522195520" readonly class="flex-grow px-3 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-lg font-mono text-slate-200">
+              <button onclick="copyPhoneNumber()" class="bg-primary/90 hover:bg-primary text-white text-sm font-medium py-2 px-4 rounded-lg transition active:scale-95">Copiar</button>
             </div>
+            <p id="copy-status" class="mt-2 text-sm text-center text-secondary font-medium hidden">¡Número de WhatsApp copiado!</p>
+          </div>
+
+          <!-- Llamadas -->
+          <div class="mb-8 bg-black/20 p-4 rounded-xl border border-white/10">
+            <p class="text-sm font-semibold text-slate-200 mb-2">Número para llamadas (copiar y pegar):</p>
+            <div class="flex gap-2">
+              <input type="text" id="call-number-copy" value="4522195520" readonly class="flex-grow px-3 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-lg font-mono text-slate-200">
+              <button onclick="copyCallNumber()" class="bg-primary/90 hover:bg-primary text-white text-sm font-medium py-2 px-4 rounded-lg transition active:scale-95">Copiar</button>
+            </div>
+            <p id="call-copy-status" class="mt-2 text-sm text-center text-secondary font-medium hidden">¡Número de llamadas copiado!</p>
+          </div>
+
+          <!-- Formulario -->
+          <form id="appointment-form" action="#" method="POST" class="space-y-5">
+            <div>
+              <label class="block text-sm font-medium text-slate-200">Nombre Completo</label>
+              <input type="text" id="name-form" name="name" required class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-200">Teléfono (WhatsApp)</label>
+              <input type="tel" id="phone-form" name="phone" required class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary" value="4522195520">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-200">Correo Electrónico</label>
+              <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-200">Motivo de la Cita</label>
+              <textarea id="message" name="message" rows="3" required class="mt-1 block w-full px-4 py-2 bg-slate-900/60 border border-white/10 rounded-lg text-slate-100 focus:ring-primary focus:border-primary"></textarea>
+            </div>
+
+            <button type="submit" class="w-full justify-center py-3 px-4 rounded-full shadow-glow text-lg font-semibold text-white bg-secondary hover:bg-emerald-600 transition transform hover:scale-[1.01]">Solicitar Cita</button>
+          </form>
+
+          <div id="success-message" class="hidden mt-6 bg-emerald-900/30 border-l-4 border-emerald-500 text-emerald-200 p-4 rounded-lg" role="alert">
+            <p class="font-bold text-white">¡Solicitud Enviada!</p>
+            <p>Gracias por contactarnos. Pronto nos comunicaremos contigo al 452 219 5520 para confirmar tu cita.</p>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
+  </main>
 
-    <main>
-        <!-- HERO -->
-        <section id="inicio" class="relative bg-white pt-16 pb-20 sm:pt-24 sm:pb-32 overflow-hidden">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
-                    <!-- Texto -->
-                    <div class="lg:col-span-6 xl:col-span-5 text-center lg:text-left">
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
-                            Recupera <span class="text-danger uppercase">TU SONRISA</span>, <span class="text-primary">un Regalo para Mejorar tu Salud.</span>
-                        </h1>
-                        <p class="mt-4 text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
-                            <strong>PractiDent</strong> ofrece tratamientos dentales de alta calidad a precios accesibles. Recibe atención profesional supervisada, enfocada en tu bienestar y ahorro.
-                        </p>
-                        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <a href="#servicios" class="px-8 py-3 text-lg font-semibold rounded-full cta-shadow text-white bg-primary hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.02]">Explora Servicios Gratuitos</a>
-                            <a href="https://wa.me/524522195520?text=Hola%2C%20PractiDent.%20Quiero%20saber%20m%C3%A1s%20sobre%20sus%20programas%20de%20pr%C3%A1ctica." target="_blank" class="px-8 py-3 text-lg font-semibold rounded-full shadow-lg text-white bg-secondary hover:bg-emerald-600 transition duration-300 flex items-center justify-center transform hover:scale-[1.01]">
-                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2.01c-5.503 0-9.982 4.479-9.982 9.982 0 1.956.56 3.844 1.614 5.485L2.01 22.01l4.57-1.201a9.92 9.92 0 005.46 1.48c5.503 0 9.982-4.479 9.982-9.982.001-5.503-4.479-9.982-9.982-9.982zm3.332 12.87c-.198.375-.544.498-.813.528-.27.029-.481.044-.897-.132-.416-.176-1.554-.64-2.968-1.83-1.414-1.19-2.357-2.668-2.632-3.136-.274-.468-.031-.724.116-.897.147-.174.329-.416.481-.599.152-.182.201-.33.303-.559.102-.228.051-.424-.031-.599-.082-.175-.769-1.854-1.054-2.532-.285-.678-.57-.599-.769-.599-.198 0-.424-.025-.636-.025-.213 0-.559.077-.852.342-.294.265-1.116 1.096-1.116 2.668s1.148 3.09 1.301 3.32c.152.23.299.408.57.737 1.414 1.685 2.617 2.115 3.513 2.458.248.093.475.14.717.165.242.025.79.035 1.148.021.357-.013.98-.403 1.127-.793.147-.39.147-.724.102-.793-.046-.068-.198-.124-.411-.237z"/></svg>
-                                Quiero saber más
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Imagen HERO -->
-                    <div class="mt-12 lg:mt-0 lg:col-span-6 xl:col-span-7">
-                        <div class="relative rounded-3xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-[1.01]">
-                            <img class="w-full h-auto object-cover" 
-                                 src="https://placehold.co/700x500/4f46e5/ffffff?text=CL%C3%8DNICA+DENTAL" 
-                                 alt="Practica Odontológica supervisada" 
-                                 onerror="this.onerror=null;this.src='https://placehold.co/700x500/4f46e5/ffffff?text=CL%C3%8DNICA+DENTAL'" />
-                            <div class="absolute inset-0 bg-primary opacity-10"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- BANNER aliado -->
-        <section class="py-12 bg-secondary/10">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center justify-between border-t-8 border-secondary">
-                    <div class="text-center md:text-left mb-4 md:mb-0">
-                        <h3 class="text-2xl font-bold text-gray-900 flex items-center justify-center md:justify-start">
-                            <svg class="w-6 h-6 text-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2h-1v-2h1c.826 0 1.5-.448 1.5-1s-.674-1.5-1.5-1.5-1.5.674-1.5 1.5v1.5M9 14h6m-3-11v2m-3 0h6"/></svg>
-                            ¡BENEFICIO EXCLUSIVO PARA PACIENTES!
-                        </h3>
-                        <p class="mt-1 text-lg text-gray-600">
-                            Gracias a nuestra colaboración con <strong>Farmacia DAYAMI</strong>, obtén descuentos en medicamentos post-operatorios.
-                        </p>
-                    </div>
-                    <a href="https://dayami.netlify.app" target="_blank" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-full shadow-lg text-white bg-primary hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
-                        Visitar Farmacia DAYAMI &rarr;
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- SERVICIOS -->
-        <section id="servicios" class="py-16 sm:py-24 bg-accent">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Nuestros Programas de Práctica Odontológica</h2>
-                <p class="mt-4 text-xl text-gray-600 max-w-5xl mx-auto">
-                    Tu oportunidad de tratamientos de calidad: selecciona el servicio para conocer el proceso, los requisitos y el gran ahorro que obtienes.
-                </p>
-
-                <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- 1 Restauración y Prevención -->
-                    <a href="restauracion.html" class="block bg-white p-4 rounded-2xl shadow-2xl hover:shadow-primary/30 transition duration-300 transform hover:-translate-y-1 border-t-8 border-secondary group">
-                        <img src="imágenes/restauracion.jpg" alt="Restauración y Prevención" class="card-image w-full object-cover rounded-xl mb-4" onerror="this.onerror=null;this.src='https://placehold.co/600x240/10b981/ffffff?text=RESTAURACI%C3%93N'" />
-                        <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary transition mt-2">Restauración y Prevención (Gratuita)</h3>
-                        <p class="mt-1 text-sm text-gray-600">¡Rellenos sin costo! Resinas, amalgamas, flúor y selladores.</p>
-                        <span class="mt-4 inline-block text-secondary font-semibold text-xs border-b border-secondary">Ver el proceso &rarr;</span>
-                    </a>
-
-                    <!-- 2 Extracciones -->
-                    <a href="extraccion.html" class="block bg-white p-4 rounded-2xl shadow-2xl hover:shadow-secondary/30 transition duration-300 transform hover:-translate-y-1 border-t-8 border-secondary group">
-                        <img src="imágenes/extraccion.jpg" alt="Extracciones Dentales" class="card-image w-full object-cover rounded-xl mb-4" onerror="this.onerror=null;this.src='https://placehold.co/600x240/10b981/ffffff?text=EXTRACCI%C3%93N'" />
-                        <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary transition mt-2">Extracciones Dentales (Gratuita)</h3>
-                        <p class="mt-1 text-sm text-gray-600">Retiro de piezas dentales (aplica cargo mínimo por radiografía).</p>
-                        <span class="mt-4 inline-block text-secondary font-semibold text-xs border-b border-secondary">Ver el proceso &rarr;</span>
-                    </a>
-
-                    <!-- 3 Prótesis -->
-                    <a href="ppf.html" class="block bg-white p-4 rounded-2xl shadow-2xl hover:shadow-primary/30 transition duration-300 transform hover:-translate-y-1 border-t-8 border-primary group">
-                        <img src="imágenes/protesis.jpg" alt="Prótesis" class="card-image w-full object-cover rounded-xl mb-4" onerror="this.onerror=null;this.src='https://placehold.co/600x240/4f46e5/ffffff?text=PROTESIS'" />
-                        <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary transition mt-2">Prótesis Fijas y Removibles</h3>
-                        <p class="mt-1 text-sm text-gray-600">Rehabilitación de calidad: solo cubres una aportación mínima por materiales.</p>
-                        <span class="mt-4 inline-block text-primary font-semibold text-xs border-b border-primary">Ver costos y detalles &rarr;</span>
-                    </a>
-
-                    <!-- 4 Incrustaciones -->
-                    <a href="incrustacion.html" class="block bg-white p-4 rounded-2xl shadow-2xl hover:shadow-secondary/30 transition duration-300 transform hover:-translate-y-1 border-t-8 border-secondary group">
-                        <img src="imágenes/incrustaciones.jpg" alt="Incrustaciones" class="card-image w-full object-cover rounded-xl mb-4" onerror="this.onerror=null;this.src='https://placehold.co/600x240/10b981/ffffff?text=INCRUSTACIONES'" />
-                        <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary transition mt-2">Incrustaciones Dentales</h3>
-                        <p class="mt-1 text-sm text-gray-600">Restauraciones estéticas y duraderas. Aportación de bajo costo por material.</p>
-                        <span class="mt-4 inline-block text-secondary font-semibold text-xs border-b border-secondary">Ver costos y detalles &rarr;</span>
-                    </a>
-
-                    <!-- 5 Endodoncia (inactivo) -->
-                    <div onclick="showModal()" class="block bg-gray-100 p-4 rounded-2xl shadow-lg transition duration-300 cursor-pointer border-t-8 border-gray-400 group">
-                        <img src="imágenes/endodoncia.jpg" alt="Endodoncia" class="card-image w-full object-cover rounded-xl mb-4 opacity-50" onerror="this.onerror=null;this.src='https://placehold.co/600x240/9ca3af/ffffff?text=ENDODONCIA'" />
-                        <h3 class="text-xl font-bold text-gray-500 group-hover:text-gray-700 mt-2">Endodoncia (No Disponible)</h3>
-                        <p class="mt-1 text-sm text-gray-500">Tratamiento especializado de conducto. *Clic para aviso.*</p>
-                        <span class="mt-4 inline-block text-gray-500 font-semibold text-xs border-b border-gray-500">Ver información &rarr;</span>
-                    </div>
-
-                    <!-- 6 Ortodoncia (inactivo) -->
-                    <div onclick="showModal()" class="block bg-gray-100 p-4 rounded-2xl shadow-lg transition duration-300 cursor-pointer border-t-8 border-gray-400 group">
-                        <img src="imágenes/ortodoncia.jpg" alt="Ortodoncia" class="card-image w-full object-cover rounded-xl mb-4 opacity-50" onerror="this.onerror=null;this.src='https://placehold.co/600x240/9ca3af/ffffff?text=ORTODONCIA'" />
-                        <h3 class="text-xl font-bold text-gray-500 group-hover:text-gray-700 mt-2">Ortodoncia (No Disponible)</h3>
-                        <p class="mt-1 text-sm text-gray-500">Alineación dental y corrección de mordida. *Clic para aviso.*</p>
-                        <span class="mt-4 inline-block text-gray-500 font-semibold text-xs border-b border-gray-500">Ver información &rarr;</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- NOSOTROS + carrusel -->
-        <section id="nosotros" class="py-16 sm:py-24 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                    <div>
-                        <span class="text-secondary uppercase font-semibold text-sm">Conoce al equipo</span>
-                        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-gray-900">Confianza en Cada Procedimiento</h2>
-                        <p class="mt-4 text-gray-600 text-lg">
-                            En <strong>PractiDent</strong>, garantizamos atención segura y de vanguardia:
-                        </p>
-                        <ul class="mt-6 space-y-4 text-gray-700 text-lg">
-                            <li class="flex items-start"><svg class="h-6 w-6 flex-shrink-0 text-primary mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="ml-3 font-semibold">Supervisión Médica:</span> Cada tratamiento es validado por doctores especialistas.</li>
-                            <li class="flex items-start"><svg class="h-6 w-6 flex-shrink-0 text-primary mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="ml-3 font-semibold">Tecnología Digital:</span> Uso de equipos modernos para diagnósticos precisos.</li>
-                            <li class="flex items-start"><svg class="h-6 w-6 flex-shrink-0 text-primary mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="ml-3 font-semibold">Máximo Ahorro:</span> Servicios gratuitos y descuentos en Farmacia DAYAMI para tu post-operatorio.</li>
-                        </ul>
-                    </div>
-
-                    <div class="mt-12 lg:mt-0 relative">
-                        <div id="image-carousel" class="relative w-full"></div>
-                        <button id="prev-btn" class="hidden absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/70 p-3 rounded-full shadow-lg hover:bg-white transition duration-300" aria-label="Anterior"><svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
-                        <button id="next-btn" class="hidden absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/70 p-3 rounded-full shadow-lg hover:bg-white transition duration-300" aria-label="Siguiente"><svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TÉRMINOS -->
-        <section id="terminos" class="py-16 sm:py-24 bg-gray-100">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 text-center">Compromiso y Transparencia</h2>
-                <div class="mt-8 bg-white p-8 rounded-2xl shadow-xl border-l-4 border-primary space-y-4">
-                    <p class="text-lg font-semibold text-primary mb-4">Cláusula de Práctica y Garantía de Calidad</p>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-2xl font-bold text-secondary">1.</span>
-                        <p class="text-gray-700"><strong>Disponibilidad de Citas:</strong> La atención es exclusiva para casos clínicos requeridos por nuestro programa y solo dentro de los horarios clínicos establecidos.</p>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-2xl font-bold text-secondary">2.</span>
-                        <p class="text-gray-700"><strong>Calidad y Compromiso:</strong> Garantizamos el uso de los <strong>mejores materiales</strong>. La calidad depende de la colaboración y asistencia puntual del paciente a todas sus citas de control.</p>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-2xl font-bold text-secondary">3.</span>
-                        <p class="text-gray-700"><strong>Aportación Transparente:</strong> El dinero solicitado para Prótesis e Incrustaciones <strong>cubre estrictamente el costo de laboratorio y materiales</strong>; no hay fines de lucro. Buscamos darte precios muy por debajo del mercado.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACTO -->
-        <section id="contacto" class="py-16 sm:py-24 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">¿Listo para una Sonrisa saludable?</h2>
-                    <p class="mt-4 text-xl text-gray-600">Agenda tu primera consulta de valoración hoy mismo. ¡El primer paso es gratuito!</p>
-                </div>
-
-                <div class="mt-12 max-w-lg mx-auto bg-gray-50 p-8 rounded-2xl shadow-2xl border-t-8 border-secondary">
-                    <!-- RECUADRO WHATSAPP -->
-                    <div class="mb-8 bg-white p-4 rounded-xl border border-gray-200 shadow-lg">
-                        <p class="text-sm font-semibold text-gray-700 mb-2">Contáctanos vía WhatsApp para agendar:</p>
-                        <div class="flex space-x-2">
-                            <input type="text" id="phone-number-copy" value="4522195520" readonly class="flex-grow px-3 py-2 border border-gray-300 rounded-lg text-lg font-mono bg-gray-50 select-text">
-                            <button onclick="copyPhoneNumber()" class="flex-shrink-0 bg-primary text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition transform active:scale-95">Copiar</button>
-                        </div>
-                        <p id="copy-status" class="mt-2 text-sm text-center text-secondary font-medium hidden">¡Número de WhatsApp copiado!</p>
-                    </div>
-
-                    <!-- RECUADRO LLAMADAS -->
-                    <div class="mb-8 bg-white p-4 rounded-xl border border-gray-200 shadow-lg">
-                        <p class="text-sm font-semibold text-gray-700 mb-2">Número para llamadas (copiar y pegar):</p>
-                        <div class="flex space-x-2">
-                            <input type="text" id="call-number-copy" value="4522195520" readonly class="flex-grow px-3 py-2 border border-gray-300 rounded-lg text-lg font-mono bg-gray-50 select-text">
-                            <button onclick="copyCallNumber()" class="flex-shrink-0 bg-primary text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition transform active:scale-95">Copiar</button>
-                        </div>
-                        <p id="call-copy-status" class="mt-2 text-sm text-center text-secondary font-medium hidden">¡Número de llamadas copiado!</p>
-                    </div>
-
-                    <form id="appointment-form" action="#" method="POST" class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700">Nombre Completo</label>
-                            <input type="text" id="name-form" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary">
-                        </div>
-                        <div>
-                            <label for="phone-form" class="block text-sm font-medium text-gray-700">Teléfono (WhatsApp)</label>
-                            <input type="tel" id="phone-form" name="phone" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary" value="4522195520">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
-                            <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700">Motivo de la Cita</label>
-                            <textarea id="message" name="message" rows="3" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-full shadow-lg text-lg font-semibold text-white bg-secondary hover:bg-emerald-600 transition duration-300 transform hover:scale-[1.01]">Solicitar Cita</button>
-                    </form>
-
-                    <div id="success-message" class="hidden mt-6 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-lg" role="alert">
-                        <p class="font-bold">¡Solicitud Enviada!</p>
-                        <p>Gracias por contactarnos. Pronto nos comunicaremos contigo al 452 219 5520 para confirmar tu cita.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="text-lg font-bold text-primary mb-4">Contáctanos</h4>
-                    <p class="text-sm"><span class="font-semibold">Dirección:</span> [Tu Dirección Completa]<br><span class="font-semibold">Teléfono (WhatsApp):</span> <strong>452 219 5520</strong><br><span class="font-semibold">Email:</span> contacto@practident.com</p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold text-primary mb-4">Horarios</h4>
-                    <p class="text-sm">Lunes a Viernes: 9:00 AM - 7:00 PM<br>Sábados: 9:00 AM - 2:00 PM<br>Domingos: Cerrado</p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold text-primary mb-4">Enlaces</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#servicios" class="hover:text-secondary transition duration-300">Servicios y Programas</a></li>
-                        <li><a href="#terminos" class="hover:text-secondary transition duration-300">Términos y Condiciones</a></li>
-                        <li><a href="#contacto" class="hover:text-secondary transition duration-300">Agenda una Cita</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold text-primary mb-4">Síguenos</h4>
-                    <div class="flex items-center gap-3">
-                        <a href="https://www.instagram.com/practident_db?igsh=MWxnOTNlb2l4MzN0eQ%3D%3D&utm_source=qr" target="_blank" class="text-white hover:text-secondary" aria-label="Instagram PractiDent">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.773 1.674 4.92 4.92.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.147 3.248-1.669 4.772-4.92 4.92-.12.058-.29.068-.82.072H9.083c-1.267 0-1.645-.011-4.85-.069-3.252-.148-4.773-1.674-4.92-4.92-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.147-3.248 1.669-4.772 4.92-4.92.12-.058.29-.068.82-.072h5.836zm0 2.264c-3.176 0-3.551.012-4.791.065-2.715.124-3.791 1.272-3.914 3.914-.053 1.24-.065 1.615-.065 4.791s.012 3.551.065 4.791c.124 2.715 1.272 3.791 3.914 3.914 1.24.053 1.615.065 4.791.065s3.551-.012 4.791-.065c2.715-.124 3.791-1.272 3.914-3.914.053-1.24.065-1.615.65-4.791s-.012-3.551-.065-4.791c-.124-2.715-1.272-3.791-3.914-3.914-1.24-.053-1.615-.065-4.791-.065zm0 1.503c2.477 0 4.493 2.016 4.493 4.493S14.477 15.453 12 15.453s-4.493-2.016-4.493-4.493 2.016-4.493 4.493-4.493zm0 1.503c-1.645 0-2.99 1.345-2.99 2.99s1.345 2.99 2.99 2.99 2.99-1.345 2.99-2.99-1.345-2.99-2.99-2.99zm6.406-3.812a1.065 1.065 0 11-2.13 0 1.065 1.065 0 012.13 0z"/></svg>
-                        </a>
-                        <span class="text-sm font-semibold">@practident_DB</span>
-                        <a href="https://wa.me/524522195520" target="_blank" class="text-white hover:text-secondary" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2.094 17.653c-.328.093-.578.118-.847.078-.297-.047-.796-.188-1.078-.562-.281-.375-1.094-1.422-1.094-2.672-.016-1.25.75-2.227 1.484-2.922.734-.695 1.547-1.125 1.891-1.125.344 0 .547.031.75.297.203.25.312.609.187.953-.125.344-.437.89-.594 1.078-.156.188-.312.391-.172.641.141.25.797 1.359 1.578 1.688.781.328 1.094.406 1.484.344.391-.062.891-.422 1.016-.672.125-.25.203-.437.359-.531.156-.094.594-.25.906-.187.312.062 1.969.953 2.25 1.125.281.188.469.312.5.484.031.172.031.328-.187.594-.219.266-.75 1.125-1.031 1.344-.281.219-.594.484-.891.734-.297.25-.688.547-1.031.844-.344.297-.578.484-.844.578z"/></svg></a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-8 pt-6 border-t border-gray-700 text-center">
-                <p class="text-sm text-gray-400">© 2024 PractiDent Clínica Odontológica. Todos los derechos reservados.</p>
-            </div>
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-300 py-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h4 class="text-lg font-bold text-white mb-4">Contáctanos</h4>
+          <p class="text-sm"><span class="font-semibold">Dirección:</span> [Tu Dirección Completa]<br><span class="font-semibold">WhatsApp:</span> <strong>452 219 5520</strong><br><span class="font-semibold">Email:</span> contacto@practident.com</p>
         </div>
-    </footer>
+        <div>
+          <h4 class="text-lg font-bold text-white mb-4">Horarios</h4>
+          <p class="text-sm">Lunes a Viernes: 9:00 AM - 7:00 PM<br>Sábados: 9:00 AM - 2:00 PM<br>Domingos: Cerrado</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold text-white mb-4">Enlaces</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#servicios" class="hover:text-secondary transition">Servicios y Programas</a></li>
+            <li><a href="#terminos" class="hover:text-secondary transition">Términos y Condiciones</a></li>
+            <li><a href="#contacto" class="hover:text-secondary transition">Agenda una Cita</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold text-white mb-4">Síguenos</h4>
+          <div class="flex items-center gap-3">
+            <a href="https://www.instagram.com/practident_db?igsh=MWxnOTNlb2l4MzN0eQ%3D%3D&utm_source=qr" target="_blank" class="text-white/90 hover:text-secondary" aria-label="Instagram">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.773 1.674 4.92 4.92.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.147 3.248-1.669 4.772-4.92 4.92-.12.058-.29.068-.82.072H9.083c-1.267 0-1.645-.011-4.85-.069-3.252-.148-4.773-1.674-4.92-4.92-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.147-3.248 1.669-4.772 4.92-4.92.12-.058.29-.068.82-.072z"/></svg>
+            </a>
+            <span class="text-sm font-semibold text-white">@practident_DB</span>
+            <a href="https://wa.me/524522195520" target="_blank" class="text-white/90 hover:text-secondary" aria-label="WhatsApp">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-white/10 text-center">
+        <p class="text-sm text-slate-400">© 2024 PractiDent Clínica Odontológica. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
 
-    <!-- JS -->
-    <script>
-        // Modal
-        function showModal() { document.getElementById('alert-modal').classList.remove('hidden'); }
-        function closeModal() { document.getElementById('alert-modal').classList.add('hidden'); }
-        window.showModal = showModal;
+  <!-- JS (IDs y lógica intactos) -->
+  <script>
+    // Modal
+    function showModal() { document.getElementById('alert-modal').classList.remove('hidden'); document.getElementById('alert-modal').classList.add('flex'); }
+    function closeModal() { document.getElementById('alert-modal').classList.add('hidden'); document.getElementById('alert-modal').classList.remove('flex'); }
+    window.showModal = showModal;
 
-        // Menú móvil
-        document.getElementById('mobile-menu-button').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-        document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.add('hidden');
-        }));
+    // Menú móvil
+    document.getElementById('mobile-menu-button').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    }));
 
-        // Copiar WhatsApp
-        function copyPhoneNumber() {
-            const el = document.getElementById('phone-number-copy');
-            el.select(); el.setSelectionRange(0, 99999);
-            document.execCommand('copy');
-            const status = document.getElementById('copy-status');
-            status.classList.remove('hidden');
-            setTimeout(() => status.classList.add('hidden'), 2000);
+    // Copiar WhatsApp
+    function copyPhoneNumber() {
+      const el = document.getElementById('phone-number-copy');
+      el.select(); el.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      const status = document.getElementById('copy-status');
+      status.classList.remove('hidden');
+      setTimeout(() => status.classList.add('hidden'), 2000);
+    }
+    window.copyPhoneNumber = copyPhoneNumber;
+
+    // Copiar llamadas
+    function copyCallNumber() {
+      const el = document.getElementById('call-number-copy');
+      el.select(); el.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      const status = document.getElementById('call-copy-status');
+      status.classList.remove('hidden');
+      setTimeout(() => status.classList.add('hidden'), 2000);
+    }
+    window.copyCallNumber = copyCallNumber;
+
+    // Formulario
+    document.getElementById('appointment-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      this.classList.add('hidden');
+      document.getElementById('success-message').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('success-message').classList.add('hidden');
+        this.classList.remove('hidden');
+        this.reset();
+      }, 5000);
+    });
+
+    // Carrusel con caption (IDs intactos)
+    const carouselContainer = document.getElementById('image-carousel');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    if (carouselContainer) {
+      let currentImageIndex = 0;
+      const imageURLs = [
+        { src: 'image/f1.jpg', alt: 'Foto de la Clínica 1', title: 'Área clínica' },
+        { src: 'image/f2.jpg', alt: 'Foto de la Clínica 2', title: 'Rehabilitación' },
+      ];
+
+      function showImage(index) {
+        carouselContainer.innerHTML = '';
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'relative rounded-3xl shadow-[0_25px_70px_-15px_rgba(0,0,0,.55)] overflow-hidden h-96 ring-1 ring-white/10';
+
+        const img = document.createElement('img');
+        img.className = 'w-full h-full object-cover';
+        img.src = imageURLs[index].src;
+        img.alt = imageURLs[index].alt;
+        img.onerror = function () {
+          this.onerror = null;
+          this.src = 'https://placehold.co/800x500?text=Imagen+no+encontrada';
+        };
+
+        const caption = document.createElement('div');
+        caption.className = 'absolute bottom-3 left-3 right-3 bg-black/35 ring-1 ring-white/15 rounded-xl text-white text-base font-semibold px-4 py-3 backdrop-blur-xs';
+        caption.textContent = imageURLs[index].title;
+
+        wrapper.appendChild(img);
+        wrapper.appendChild(caption);
+        carouselContainer.appendChild(wrapper);
+
+        if (imageURLs.length > 1) {
+          const dots = document.createElement('div');
+          dots.className = 'absolute -bottom-5 left-0 right-0 flex justify-center space-x-2';
+          imageURLs.forEach((_, i) => {
+            const d = document.createElement('button');
+            d.className = `w-2.5 h-2.5 rounded-full ring-1 ring-white/40 ${i === index ? 'bg-white' : 'bg-white/40'} transition`;
+            d.onclick = () => { currentImageIndex = i; showImage(currentImageIndex); };
+            dots.appendChild(d);
+          });
+          carouselContainer.appendChild(dots);
         }
-        window.copyPhoneNumber = copyPhoneNumber;
 
-        // Copiar número para llamadas
-        function copyCallNumber() {
-            const el = document.getElementById('call-number-copy');
-            el.select(); el.setSelectionRange(0, 99999);
-            document.execCommand('copy');
-            const status = document.getElementById('call-copy-status');
-            status.classList.remove('hidden');
-            setTimeout(() => status.classList.add('hidden'), 2000);
-        }
-        window.copyCallNumber = copyCallNumber;
+        const hideNav = imageURLs.length <= 1;
+        prevBtn.classList.toggle('hidden', hideNav);
+        nextBtn.classList.toggle('hidden', hideNav);
+      }
 
-        // Formulario (simulado)
-        document.getElementById('appointment-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            this.classList.add('hidden');
-            document.getElementById('success-message').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('success-message').classList.add('hidden'); this.classList.remove('hidden'); this.reset(); }, 5000);
-        });
+      function nextImage() { currentImageIndex = (currentImageIndex + 1) % imageURLs.length; showImage(currentImageIndex); }
+      function prevImage() { currentImageIndex = (currentImageIndex - 1 + imageURLs.length) % imageURLs.length; showImage(currentImageIndex); }
 
-        // Carrusel de Imágenes (JPG en /imágenes)
-        const carouselContainer = document.getElementById('image-carousel');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
+      nextBtn.addEventListener('click', nextImage);
+      prevBtn.addEventListener('click', prevImage);
 
-        if (carouselContainer) {
-            let currentImageIndex = 0;
-            const MAX = 2; 
-            const candidates = Array.from({ length: MAX }, (_, i) => `imágenes/f${i + 1}.jpg`);
-            const imageURLs = [];
-
-            function checkImageExistence() {
-                // En este entorno usamos placeholders; cuando subas tus f1.jpg/f2.jpg reales se verán automáticamente
-                for (let i = 1; i <= MAX; i++) {
-                    const path = `imágenes/f${i}.jpg`;
-                    imageURLs.push({ 
-                        src: `https://placehold.co/700x500/10b981/ffffff?text=${encodeURIComponent(path)}`, 
-                        alt: `Foto de la Clínica ${i}` 
-                    });
-                }
-                initCarousel();
-            }
-
-            function showImage(index) {
-                if (!imageURLs.length) {
-                    prevBtn.classList.add('hidden');
-                    nextBtn.classList.add('hidden');
-                    carouselContainer.innerHTML = '<div class="h-96 flex items-center justify-center bg-gray-200 rounded-3xl text-gray-500 font-semibold">Agrega tus fotos JPG en /imágenes/f1.jpg, f2.jpg, ...</div>';
-                    return;
-                }
-                carouselContainer.innerHTML = '';
-                const img = document.createElement('img');
-                img.className = 'w-full h-auto object-cover rounded-3xl shadow-2xl h-96 object-cover';
-                img.src = imageURLs[index].src;
-                img.alt = imageURLs[index].alt;
-                carouselContainer.appendChild(img);
-
-                if (imageURLs.length > 1) {
-                    const dots = document.createElement('div');
-                    dots.className = 'absolute bottom-4 left-0 right-0 flex justify-center space-x-2';
-                    imageURLs.forEach((_, i) => {
-                        const d = document.createElement('button');
-                        d.className = `w-3 h-3 rounded-full ${i === index ? 'bg-primary' : 'bg-white opacity-50'} transition`;
-                        d.onclick = () => { currentImageIndex = i; showImage(currentImageIndex); };
-                        dots.appendChild(d);
-                    });
-                    carouselContainer.appendChild(dots);
-                    prevBtn.classList.remove('hidden'); 
-                    nextBtn.classList.remove('hidden');
-                } else {
-                    prevBtn.classList.add('hidden'); 
-                    nextBtn.classList.add('hidden');
-                }
-            }
-
-            function nextImage() { currentImageIndex = (currentImageIndex + 1) % imageURLs.length; showImage(currentImageIndex); }
-            function prevImage() { currentImageIndex = (currentImageIndex - 1 + imageURLs.length) % imageURLs.length; showImage(currentImageIndex); }
-            window.nextImage = nextImage; window.prevImage = prevImage;
-
-            function initCarousel() {
-                showImage(currentImageIndex);
-                nextBtn.addEventListener('click', nextImage);
-                prevBtn.addEventListener('click', prevImage);
-            }
-            
-            checkImageExistence();
-        }
-    </script>
+      showImage(currentImageIndex);
+    }
+  </script>
 </body>
 </html>
