@@ -196,74 +196,137 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Nuestros Programas de Práctica Odontológica</h2>
         <p class="mt-3 text-lg text-slate-300 max-w-4xl mx-auto">
-          Tu oportunidad de tratamientos de calidad: selecciona el servicio para conocer el proceso, los requisitos y el gran ahorro que obtienes.
+          Tu oportunidad de tratamientos de calidad: toca la imagen o pasa el ratón por encima para ver detalles, y usa el botón inferior para conocer los requisitos de cada servicio.
         </p>
 
         <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <a href="restauracion.html" class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(79,70,229,.5)] transition border-t-4 border-secondary hover:-translate-y-1">
-            <div class="relative overflow-hidden rounded-xl">
-              <img src="image/restauracion.jpg" alt="Restauración y Prevención" class="card-image w-full object-cover"
+          <!-- Tarjeta 1: Restauración -->
+          <div class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(79,70,229,.5)] transition border-t-4 border-secondary flex flex-col">
+            <!-- Contenedor de la imagen (Interactivo para revelar info) -->
+            <div class="relative overflow-hidden rounded-xl h-48 cursor-pointer" tabindex="0">
+              <!-- Imagen Principal -->
+              <img src="image/resinas.jpg" alt="Restauración y Prevención" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0 group-focus:opacity-0"
                    onerror="this.onerror=null;this.src='https://placehold.co/600x240/10b981/ffffff?text=RESTAURACI%C3%93N'"/>
-              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">Gratuito</span>
+              <!-- Imagen Explicativa (Hover / Focus) -->
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 bg-black/80 flex items-center justify-center p-2">
+                 <img src="image/resinas2.jpg" alt="Proceso de resina" class="w-full h-full object-contain"
+                      onerror="this.style.display='none'"/>
+              </div>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/70 text-white border border-white/20 z-10 pointer-events-none">Gratuito</span>
             </div>
-            <h3 class="mt-4 text-xl font-bold text-white group-hover:text-primary">Restauración y Prevención</h3>
-            <p class="mt-1 text-sm text-slate-300">¡Rellenos sin costo! Resinas, amalgamas, flúor y selladores.</p>
-            <span class="mt-4 inline-block text-secondary font-semibold text-xs border-b border-secondary">Ver el proceso &rarr;</span>
-          </a>
-
-          <a href="extraccion.html" class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,.45)] transition border-t-4 border-secondary hover:-translate-y-1">
-            <div class="relative overflow-hidden rounded-xl">
-              <img src="image/extraccion.jpg" alt="Extracciones Dentales" class="card-image w-full object-cover"
-                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/10b981/ffffff?text=EXTRACCI%C3%93N'"/>
-              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">Gratuito</span>
+            
+            <!-- Contenido y Enlace -->
+            <div class="relative z-10 bg-card/80 p-3 mt-3 rounded-lg flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="text-xl font-bold text-white transition-colors">Restauración y Prevención</h3>
+                <p class="mt-2 text-sm text-slate-300">¡Rellenos sin costo! Resinas, amalgamas, flúor y selladores.</p>
+              </div>
+              <a href="restauracion.html" class="mt-4 block text-center w-full bg-secondary/20 hover:bg-secondary text-secondary hover:text-white py-2 rounded-lg font-semibold text-sm transition-colors border border-secondary/50 hover:border-transparent">
+                Ver el proceso &rarr;
+              </a>
             </div>
-            <h3 class="mt-4 text-xl font-bold text-white group-hover:text-primary">Extracciones Dentales</h3>
-            <p class="mt-1 text-sm text-slate-300">Retiro de piezas dentales (aplica cargo mínimo por radiografía).</p>
-            <span class="mt-4 inline-block text-secondary font-semibold text-xs border-b border-secondary">Ver el proceso &rarr;</span>
-          </a>
-
-          <a href="ppf.html" class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(79,70,229,.55)] transition border-t-4 border-primary hover:-translate-y-1">
-            <div class="relative overflow-hidden rounded-xl">
-              <img src="image/protesis.jpg" alt="Prótesis" class="card-image w-full object-cover"
-                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/4f46e5/ffffff?text=PROTESIS'"/>
-              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">Aportación mínima</span>
-            </div>
-            <h3 class="mt-4 text-xl font-bold text-white group-hover:text-primary">Prótesis Fijas y Removibles</h3>
-            <p class="mt-1 text-sm text-slate-300">Rehabilitación de calidad: solo cubres materiales.</p>
-            <span class="mt-4 inline-block text-primary font-semibold text-xs border-b border-primary">Ver costos &rarr;</span>
-          </a>
-
-          <a href="incrustacion.html" class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,.45)] transition border-t-4 border-secondary hover:-translate-y-1">
-            <div class="relative overflow-hidden rounded-xl">
-              <img src="image/incrustaciones.jpg" alt="Incrustaciones" class="card-image w-full object-cover"
-                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/10b981/ffffff?text=INCRUSTACIONES'"/>
-              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">Aportación mínima</span>
-            </div>
-            <h3 class="mt-4 text-xl font-bold text-white group-hover:text-primary">Incrustaciones Dentales</h3>
-            <p class="mt-1 text-sm text-slate-300">Restauraciones estéticas y duraderas.</p>
-            <span class="mt-4 inline-block text-secondary font-semibold text-xs border-b border-secondary">Ver detalles &rarr;</span>
-          </a>
-
-          <div onclick="showModal()" class="group glass rounded-2xl p-5 border-t-4 border-slate-600 cursor-pointer hover:-translate-y-1 transition">
-            <div class="relative overflow-hidden rounded-xl">
-              <img src="image/endodoncia.jpg" alt="Endodoncia" class="card-image w-full object-cover opacity-60"
-                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/9ca3af/ffffff?text=ENDODONCIA'"/>
-              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">No disponible</span>
-            </div>
-            <h3 class="mt-4 text-xl font-bold text-slate-300 group-hover:text-white">Endodoncia</h3>
-            <p class="mt-1 text-sm text-slate-400">Tratamiento especializado de conducto. *Clic para aviso.*</p>
-            <span class="mt-4 inline-block text-slate-400 font-semibold text-xs border-b border-slate-500">Ver información &rarr;</span>
           </div>
 
-          <div onclick="showModal()" class="group glass rounded-2xl p-5 border-t-4 border-slate-600 cursor-pointer hover:-translate-y-1 transition">
-            <div class="relative overflow-hidden rounded-xl">
-              <img src="image/ortodoncia.jpg" alt="Ortodoncia" class="card-image w-full object-cover opacity-60"
-                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/9ca3af/ffffff?text=ORTODONCIA'"/>
-              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/50 text-white border border-white/20">No disponible</span>
+          <!-- Tarjeta 2: Extracción -->
+          <div class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,.45)] transition border-t-4 border-secondary flex flex-col">
+            <div class="relative overflow-hidden rounded-xl h-48 cursor-pointer" tabindex="0">
+              <img src="image/extraccion.jpg" alt="Extracciones Dentales" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0 group-focus:opacity-0"
+                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/10b981/ffffff?text=EXTRACCI%C3%93N'"/>
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 bg-black/80 flex items-center justify-center p-2">
+                 <img src="image/extraccion3.jpg" alt="Proceso de extracción" class="w-full h-full object-contain"
+                      onerror="this.style.display='none'"/>
+              </div>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/70 text-white border border-white/20 z-10 pointer-events-none">Gratuito</span>
             </div>
-            <h3 class="mt-4 text-xl font-bold text-slate-300 group-hover:text-white">Ortodoncia</h3>
-            <p class="mt-1 text-sm text-slate-400">Alineación dental y corrección de mordida.</p>
-            <span class="mt-4 inline-block text-slate-400 font-semibold text-xs border-b border-slate-500">Ver información &rarr;</span>
+            <div class="relative z-10 bg-card/80 p-3 mt-3 rounded-lg flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="text-xl font-bold text-white transition-colors">Extracciones Dentales</h3>
+                <p class="mt-2 text-sm text-slate-300">Retiro de piezas dentales (aplica cargo mínimo por radiografía).</p>
+              </div>
+              <a href="extraccion.html" class="mt-4 block text-center w-full bg-secondary/20 hover:bg-secondary text-secondary hover:text-white py-2 rounded-lg font-semibold text-sm transition-colors border border-secondary/50 hover:border-transparent">
+                Ver el proceso &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Tarjeta 3: Prótesis -->
+          <div class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(79,70,229,.55)] transition border-t-4 border-primary flex flex-col">
+            <div class="relative overflow-hidden rounded-xl h-48 cursor-pointer bg-white" tabindex="0">
+              <img src="image/protesis.jpg" alt="Prótesis" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0 group-focus:opacity-0"
+                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/4f46e5/ffffff?text=PROTESIS'"/>
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 bg-black/80 flex flex-col items-center justify-center p-1 gap-1">
+                 <img src="image/coronas3.jpg" alt="Coronas" class="w-full h-1/2 object-contain" onerror="this.style.display='none'"/>
+                 <img src="image/protesis3.jpg" alt="Protesis removible" class="w-full h-1/2 object-contain" onerror="this.style.display='none'"/>
+              </div>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/70 text-white border border-white/20 z-10 pointer-events-none">Aportación mínima</span>
+            </div>
+            <div class="relative z-10 bg-card/80 p-3 mt-3 rounded-lg flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="text-xl font-bold text-white transition-colors">Prótesis Fijas y Removibles</h3>
+                <p class="mt-2 text-sm text-slate-300">Rehabilitación de calidad: coronas, puentes y placas.</p>
+              </div>
+              <a href="ppf.html" class="mt-4 block text-center w-full bg-primary/20 hover:bg-primary text-primary hover:text-white py-2 rounded-lg font-semibold text-sm transition-colors border border-primary/50 hover:border-transparent">
+                Ver costos &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Tarjeta 4: Incrustaciones -->
+          <div class="group glass rounded-2xl p-5 shadow-glass hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,.45)] transition border-t-4 border-secondary flex flex-col">
+            <div class="relative overflow-hidden rounded-xl h-48 bg-white cursor-pointer" tabindex="0">
+              <img src="image/incrustacion.jpg" alt="Incrustaciones" class="w-full h-full object-contain transition-opacity duration-300 group-hover:opacity-0 group-focus:opacity-0"
+                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/10b981/ffffff?text=INCRUSTACIONES'"/>
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 bg-white flex items-center justify-center p-2">
+                 <img src="image/incrustacion3.png" alt="Explicación Incrustación" class="w-full h-full object-contain"
+                      onerror="this.style.display='none'"/>
+              </div>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/70 text-white border border-white/20 z-10 pointer-events-none">Aportación mínima</span>
+            </div>
+            <div class="relative z-10 bg-card/80 p-3 mt-3 rounded-lg flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="text-xl font-bold text-white transition-colors">Incrustaciones Dentales</h3>
+                <p class="mt-2 text-sm text-slate-300">Restauraciones estéticas para daños extensos.</p>
+              </div>
+              <a href="incrustacion.html" class="mt-4 block text-center w-full bg-secondary/20 hover:bg-secondary text-secondary hover:text-white py-2 rounded-lg font-semibold text-sm transition-colors border border-secondary/50 hover:border-transparent">
+                Ver detalles &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Tarjeta 5: Endodoncia (No disponible) -->
+          <div class="group glass rounded-2xl p-5 border-t-4 border-slate-600 transition flex flex-col">
+            <div class="relative overflow-hidden rounded-xl h-48">
+              <img src="image/endodoncia.jpg" alt="Endodoncia" class="w-full h-full object-cover opacity-50 grayscale"
+                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/9ca3af/ffffff?text=ENDODONCIA'"/>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/70 text-white border border-white/20 z-10">No disponible</span>
+            </div>
+            <div class="relative z-10 bg-card/80 p-3 mt-3 rounded-lg flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="text-xl font-bold text-slate-300 transition-colors">Endodoncia</h3>
+                <p class="mt-2 text-sm text-slate-400">Tratamiento especializado de conducto.</p>
+              </div>
+              <button onclick="showModal()" class="mt-4 block text-center w-full bg-slate-700/50 hover:bg-slate-600 text-slate-300 py-2 rounded-lg font-semibold text-sm transition-colors border border-slate-500/50">
+                Ver Aviso &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Tarjeta 6: Ortodoncia (No disponible) -->
+          <div class="group glass rounded-2xl p-5 border-t-4 border-slate-600 transition flex flex-col">
+            <div class="relative overflow-hidden rounded-xl h-48">
+              <img src="image/ortodoncia.jpg" alt="Ortodoncia" class="w-full h-full object-cover opacity-50 grayscale"
+                   onerror="this.onerror=null;this.src='https://placehold.co/600x240/9ca3af/ffffff?text=ORTODONCIA'"/>
+              <span class="absolute top-3 right-3 text-[11px] px-2 py-1 rounded-full bg-black/70 text-white border border-white/20 z-10">No disponible</span>
+            </div>
+            <div class="relative z-10 bg-card/80 p-3 mt-3 rounded-lg flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="text-xl font-bold text-slate-300 transition-colors">Ortodoncia</h3>
+                <p class="mt-2 text-sm text-slate-400">Alineación dental y corrección de mordida.</p>
+              </div>
+              <button onclick="showModal()" class="mt-4 block text-center w-full bg-slate-700/50 hover:bg-slate-600 text-slate-300 py-2 rounded-lg font-semibold text-sm transition-colors border border-slate-500/50">
+                Ver Aviso &rarr;
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -300,10 +363,10 @@
           <div class="mt-12 lg:mt-0 relative animate-float-in">
             <div id="image-carousel" class="relative w-full"></div>
 
-            <button id="prev-btn" class="hidden absolute top-1/2 left-4 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full shadow-lg ring-1 ring-white/30 backdrop-blur-xs transition" aria-label="Anterior">
+            <button id="prev-btn" class="hidden absolute top-1/2 left-4 -translate-y-1/2 bg-black/40 hover:bg-black/60 p-3 rounded-full shadow-lg ring-1 ring-white/30 backdrop-blur-xs transition" aria-label="Anterior">
               <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
             </button>
-            <button id="next-btn" class="hidden absolute top-1/2 right-4 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full shadow-lg ring-1 ring-white/30 backdrop-blur-xs transition" aria-label="Siguiente">
+            <button id="next-btn" class="hidden absolute top-1/2 right-4 -translate-y-1/2 bg-black/40 hover:bg-black/60 p-3 rounded-full shadow-lg ring-1 ring-white/30 backdrop-blur-xs transition" aria-label="Siguiente">
               <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </button>
           </div>
@@ -516,35 +579,47 @@
       }, 5000);
     });
 
-    // Carrusel (IDs intactos)
+    // Carrusel (Actualizado para coincidir con las extensiones de tus archivos)
     const carouselContainer = document.getElementById('image-carousel');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
 
     if (carouselContainer) {
       let currentImageIndex = 0;
+      // Ajustamos las extensiones: f1 y f2 son .jpg, de la f3 a la f10 son .jpeg
       const imageURLs = [
         { src: 'image/f1.jpg', alt: 'Foto de la Clínica 1', title: 'Área clínica' },
         { src: 'image/f2.jpg', alt: 'Foto de la Clínica 2', title: 'Rehabilitación' },
+        { src: 'image/f3.jpeg', alt: 'Foto de la Clínica 3', title: 'Atención de calidad' },
+        { src: 'image/f4.jpeg', alt: 'Foto de la Clínica 4', title: 'Nuestras instalaciones' },
+        { src: 'image/f5.jpeg', alt: 'Foto de la Clínica 5', title: 'Equipo moderno' },
+        { src: 'image/f6.jpeg', alt: 'Foto de la Clínica 6', title: 'Comodidad para ti' },
+        { src: 'image/f7.jpeg', alt: 'Foto de la Clínica 7', title: 'Higiene y seguridad' },
+        { src: 'image/f8.jpeg', alt: 'Foto de la Clínica 8', title: 'Profesionalismo' },
+        { src: 'image/f9.jpeg', alt: 'Foto de la Clínica 9', title: 'Trabajo con dedicación' },
+        { src: 'image/f10.jpeg', alt: 'Foto de la Clínica 10', title: 'Tu sonrisa ideal' },
+        { src: 'image/f11.jpg', alt: 'UNIVERSIDAD PRIVADA DE MICHOACAN 11', title: 'UPM' },
       ];
 
       function showImage(index) {
         carouselContainer.innerHTML = '';
 
         const wrapper = document.createElement('div');
-        wrapper.className = 'relative rounded-3xl shadow-[0_25px_70px_-15px_rgba(0,0,0,.55)] overflow-hidden h-96 ring-1 ring-white/10';
+        // Se agregó un fondo oscuro (bg-black/80) para hacer un marco elegante a las fotos verticales
+        wrapper.className = 'relative rounded-3xl shadow-[0_25px_70px_-15px_rgba(0,0,0,.55)] overflow-hidden h-[32rem] sm:h-[40rem] lg:h-[45rem] ring-1 ring-white/10 bg-black/80';
 
         const img = document.createElement('img');
-        img.className = 'w-full h-full object-cover';
+        // Se cambió object-cover por object-contain para NO recortar nada de la imagen
+        img.className = 'w-full h-full object-contain object-center';
         img.src = imageURLs[index].src;
         img.alt = imageURLs[index].alt;
         img.onerror = function () {
           this.onerror = null;
-          this.src = 'https://placehold.co/800x500?text=Imagen+no+encontrada';
+          this.src = `https://placehold.co/800x500?text=Imagen+${index + 1}+no+encontrada`;
         };
 
         const caption = document.createElement('div');
-        caption.className = 'absolute bottom-3 left-3 right-3 bg-black/35 ring-1 ring-white/15 rounded-xl text-white text-base font-semibold px-4 py-3 backdrop-blur-xs';
+        caption.className = 'absolute bottom-3 left-3 right-3 bg-black/45 ring-1 ring-white/15 rounded-xl text-white text-base font-semibold px-4 py-3 backdrop-blur-md';
         caption.textContent = imageURLs[index].title;
 
         wrapper.appendChild(img);
@@ -552,15 +627,16 @@
         carouselContainer.appendChild(wrapper);
 
         if (imageURLs.length > 1) {
-          const dots = document.createElement('div');
-          dots.className = 'absolute -bottom-5 left-0 right-0 flex justify-center space-x-2';
+          const dotsContainer = document.createElement('div');
+          // Añadimos flex-wrap por si hay muchos puntos en pantallas pequeñas
+          dotsContainer.className = 'absolute -bottom-6 left-0 right-0 flex flex-wrap justify-center gap-2 px-4';
           imageURLs.forEach((_, i) => {
             const d = document.createElement('button');
             d.className = `w-2.5 h-2.5 rounded-full ring-1 ring-white/40 ${i === index ? 'bg-white' : 'bg-white/40'} transition`;
             d.onclick = () => { currentImageIndex = i; showImage(currentImageIndex); };
-            dots.appendChild(d);
+            dotsContainer.appendChild(d);
           });
-          carouselContainer.appendChild(dots);
+          carouselContainer.appendChild(dotsContainer);
         }
 
         const hideNav = imageURLs.length <= 1;
