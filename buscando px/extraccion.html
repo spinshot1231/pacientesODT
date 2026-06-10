@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,104 +10,216 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#4f46e5',
-                        'secondary': '#10b981',
-                        'accent': '#fef3c7',
-                        'danger': '#dc2626',
+                        primary: '#4f46e5',
+                        secondary: '#10b981',
+                        accent: '#fef3c7',
+                        danger: '#ef4444',
+                        'bg-1': '#f8fafc',
+                        'card': '#ffffff',
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
                 }
             }
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50 min-h-screen flex flex-col justify-center items-center">
-    
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-4xl">
-        <div class="bg-white p-8 sm:p-12 rounded-3xl shadow-2xl border-t-8 border-secondary">
-            
-            <h1 class="text-4xl font-extrabold text-secondary mb-2">Extracciones Dentales (Servicio Clínico de Práctica)</h1>
-            <p class="text-2xl font-bold text-danger mb-6">Tu extracción es GRATUITA. Solo cubres la Radiografía.</p>
-            
-            <p class="text-xl text-gray-700 mb-8">
-                Ofrecemos extracciones de piezas dentales necesarias para el avance de nuestra práctica supervisada. Recibes atención segura, profesional y solo cubres el costo de un estudio esencial.
+<body class="font-sans text-slate-800 bg-bg-1 min-h-screen pb-12">
+
+    <!-- Navbar simple -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-3xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-slate-600 hover:text-primary transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                <span class="font-medium">Volver a inicio</span>
+            </a>
+            <span class="font-bold text-lg"><span class="text-secondary">Practi</span>Dent</span>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-4 mt-8 sm:mt-12">
+        
+        <!-- HEADER / HERO -->
+        <header class="text-center mb-10">
+            <span class="inline-block py-1 px-3 rounded-full bg-red-100 text-danger text-sm font-semibold tracking-wide mb-4">
+                Procedimiento sin costo
+            </span>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-4">
+                Extracciones Dentales Seguras y <span class="text-primary">Sin Costo de Procedimiento!</span>
+            </h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                Si tienes un diente que te causa dolor o problemas, te lo retiramos de forma gratuita bajo supervisión profesional.
             </p>
+        </header>
 
-            <div class="space-y-8">
-                
-                <!-- TRATAMIENTOS INCLUIDOS (SIMPLIFICADO) -->
-                <div class="border-l-4 border-primary pl-4">
-                    <h3 class="text-2xl font-bold text-gray-900">Tu Servicio Incluye:</h3>
-                    <ul class="mt-2 text-gray-600 list-disc list-inside space-y-1">
-                        <li>**Extracción Simple:** Retiro de piezas dentales bajo anestesia local, sin costo por la mano de obra.</li>
-                        <li>**Cuidado y Orientación:** Recibirás todas las instrucciones para tu recuperación post-extracción.</li>
-                    </ul>
-                    <div class="mt-4 p-3 bg-red-50 text-danger rounded-lg font-semibold border border-danger/50">
-                        ⚠️ **IMPORTANTE:** Citas disponibles ÚNICAMENTE en los días y horarios clínicos del alumno.
-                    </div>
-                </div>
+        <!-- IMAGEN PRINCIPAL -->
+        <div class="rounded-3xl overflow-hidden shadow-xl mb-12 ring-1 ring-slate-200 bg-white">
+            <img src="image/extraccion.jpg" alt="Extracción Dental" class="w-full h-48 sm:h-64 object-contain"
+                 onerror="this.onerror=null;this.src='https://placehold.co/800x400/10b981/ffffff?text=Extracci%C3%B3n+Dental'"/>
+        </div>
 
-                <!-- PROCESO SIMPLIFICADO DE ATENCIÓN (5 PASOS) -->
-                <div class="border-l-4 border-secondary pl-4 pt-4">
-                    <h3 class="text-2xl font-bold text-gray-900">Proceso Rápido de 5 Pasos</h3>
-                    <p class="mt-2 text-gray-600 mb-4">
-                        Tu seguridad es lo primero. Así es como coordinamos tu atención:
-                    </p>
-                    <ol class="mt-2 text-gray-700 list-decimal list-inside space-y-2 font-medium">
-                        <li>**1. Contacto Inicial:** Ponerse en contacto para agendar la valoración inicial del diente.</li>
-                        <li>**2. Historial Básico:** Creación rápida de tu historial clínico con datos esenciales.</li>
-                        <li>**3. Radiografía (Costo Mínimo):** Si el profesor aprueba la valoración, se te solicitará una radiografía para un diagnóstico preciso.</li>
-                        <li>**4. Valoración y Procedimiento:** Evaluación final con el profesor a cargo y ejecución de la extracción.</li>
-                        <li>**5. Seguimiento Post-Cita:** Recibes indicaciones de cuidado y te contactamos para verificar tu cicatrización.</li>
-                    </ol>
+        <!-- RESUMEN DE BENEFICIOS (TARJETAS) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
-                
-                <!-- COMPARATIVA DE COSTOS Y BENEFICIO EXTRA -->
-                <div class="border-l-4 border-primary pl-4 pt-4">
-                    <h3 class="text-2xl font-bold text-gray-900">Tu Ahorro es GIGANTE</h3>
-                    <p class="mt-2 text-gray-600 mb-4">
-                        Una extracción dental promedio tiene este costo en clínicas privadas, pero con PractiDent solo cubres lo mínimo:
-                    </p>
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-gray-100 p-4 rounded-lg shadow-sm mb-3">
-                        <span class="text-lg font-semibold text-gray-800">Costo de Extracción en el Mercado:</span>
-                        <span class="text-2xl font-extrabold text-primary">$600 a $1,200 pesos Aprox.</span>
-                    </div>
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-secondary/10 p-4 rounded-lg shadow-sm">
-                        <span class="text-lg font-semibold text-secondary">Tu Único Costo Obligatorio (Radiografía):</span>
-                        <span class="text-2xl font-extrabold text-secondary">$140 a $180 pesos Aprox.</span>
-                    </div>
-                </div>
-
-                <!-- BENEFICIOS EXTRA -->
-                <div class="p-4 bg-yellow-100 border-l-4 border-yellow-500 rounded-lg">
-                    <h3 class="text-xl font-bold text-yellow-800">🎉 ¡Beneficio Exclusivo!</h3>
-                    <p class="mt-1 text-yellow-700">
-                        Solo para pacientes atendidos por PractiDent: Obtén un **30% de Descuento** en la Farmacia DAYAMI para todos tus medicamentos post-operatorios.
-                        <a href="https://dayami.netlify.app" target="_blank" class="font-bold text-yellow-900 underline hover:text-yellow-600 transition duration-150 block mt-1">
-                            Haz clic aquí para visitar la página de Farmacia DAYAMI.
-                        </a>
-                    </p>
-                </div>
+                <h3 class="font-bold text-slate-900 mb-2">Tu único gasto: Radiografía</h3>
+                <p class="text-sm text-slate-600">Entre $140 y $180 pesos. Te ahorras hasta $1,200 pesos comparado con una clínica privada.</p>
             </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="font-bold text-slate-900 mb-2">Proceso 100% Seguro</h3>
+                <p class="text-sm text-slate-600">Usamos anestesia local (sin dolor), un profesor especialista aprueba todo, y damos seguimiento.</p>
+            </div>
+        </div>
 
-            <div class="mt-10 text-center">
-                <p class="text-lg text-gray-700 mb-4 font-semibold">
-                    Recupera <span class="text-red-600 font-extrabold uppercase">TU SONRISA</span> con un Regalo para Mejorar tu Salud.
-                </p>
-                <a href="index.html#contacto" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-lg font-semibold rounded-full shadow-lg text-white bg-secondary hover:bg-emerald-600 transition duration-300 transform hover:scale-105">
-                    Agenda tu Valoración
-                </a>
+        <!-- SECCIÓN: ¿QUÉ ES? -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-l-4 border-primary pl-3">¿Qué es exactamente una extracción dental?</h2>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 text-slate-700 leading-relaxed">
+                <p>Es un procedimiento clínico menor, muy seguro y de rutina. Consiste en retirar de tu boca un diente que ya no tiene salvación. Se realiza siempre con anestesia local para que la zona quede adormecida y <strong>no sientas dolor durante el proceso.</strong></p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CAUSAS CON IMAGEN -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 border-l-4 border-secondary pl-3">¿Por qué necesito que me quiten el diente?</h2>
+            
+            <div class="grid sm:grid-cols-2 gap-6 items-center bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                <ul class="space-y-4 text-slate-700">
+                    <li class="flex items-start">
+                        <span class="text-danger mr-2 mt-1">•</span>
+                        <span><strong>Caries muy avanzadas:</strong> Destrucción profunda que ya no se puede arreglar con resinas o endodoncia.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-danger mr-2 mt-1">•</span>
+                        <span><strong>Infecciones graves:</strong> Absceso (infección con pus) en la raíz que pone en riesgo el hueso.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-danger mr-2 mt-1">•</span>
+                        <span><strong>Fracturas irreparables:</strong> Dientes rotos por debajo de la encía.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-danger mr-2 mt-1">•</span>
+                        <span><strong>Falta de espacio:</strong> Como ocurre frecuentemente con las muelas del juicio que empujan a los demás.</span>
+                    </li>
+                </ul>
+                <div class="rounded-xl overflow-hidden bg-slate-50 border border-slate-100 flex justify-center items-center h-48">
+                    <img src="image/extraccion2.jpg" alt="Causas de extracción dental" class="max-h-full max-w-full object-contain mix-blend-multiply"
+                         onerror="this.onerror=null;this.style.display='none'"/>
+                </div>
             </div>
             
-            <p class="mt-8 text-sm text-center text-gray-500">
-                <a href="index.html#servicios" class="text-primary hover:text-indigo-700 font-medium">&larr; Volver a Servicios</a>
+            <!-- AVISO MUELAS DEL JUICIO -->
+            <div class="mt-4 bg-orange-50 border border-orange-200 rounded-xl p-4 flex gap-3 text-orange-800 shadow-sm">
+                <svg class="w-6 h-6 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.398 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                <div class="text-sm leading-relaxed">
+                    <strong class="font-bold">Nota sobre Muelas del Juicio (Terceros Molares):</strong> 
+                    Si tus muelas del juicio están <em>impactadas</em>, <em>enterradas</em> en el hueso o <em>no se ven completamente</em> en tu boca, este servicio no las cubre. Esos casos requieren una intervención especializada y deben ser tratados directamente por un <strong>Cirujano Maxilofacial</strong>.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: BENEFICIOS -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 border-l-4 border-primary pl-3">Los Beneficios (¿Qué ganas al hacértelo?)</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-primary/5 rounded-2xl p-5 text-center">
+                    <div class="text-3xl mb-2">😌</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Alivio inmediato</h4>
+                    <p class="text-sm text-slate-600">Eliminas de raíz la fuente del dolor.</p>
+                </div>
+                <div class="bg-primary/5 rounded-2xl p-5 text-center">
+                    <div class="text-3xl mb-2">🛡️</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Frenas la infección</h4>
+                    <p class="text-sm text-slate-600">Evitas que bacterias viajen por la sangre o dañen dientes vecinos.</p>
+                </div>
+                <div class="bg-primary/5 rounded-2xl p-5 text-center">
+                    <div class="text-3xl mb-2">🏗️</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Preparas el terreno</h4>
+                    <p class="text-sm text-slate-600">Dejas tu encía y hueso sanos para un futuro puente o implante.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: PASOS CON IMAGEN -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 border-l-4 border-secondary pl-3">¿Cómo te vamos a cuidar? (Nuestros 5 pasos)</h2>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 relative overflow-hidden">
+                
+                <!-- Decoración -->
+                <div class="absolute -right-16 -top-16 opacity-5 pointer-events-none">
+                    <img src="image/extraccion3.jpg" alt="decoración" class="w-64 h-64 object-contain">
+                </div>
+
+                <div class="space-y-4 relative z-10">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-sm">1</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Valoración</h4>
+                            <p class="text-sm text-slate-600">Nos contactas y revisamos tu boca.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-sm">2</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Tu Historial</h4>
+                            <p class="text-sm text-slate-600">Anotamos tus datos de salud para protegerte.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-sm">3</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Tu Radiografía</h4>
+                            <p class="text-sm text-slate-600">Te pedimos un estudio económico para ver la raíz (aprobado por profesor).</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-sm">4</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">El Procedimiento</h4>
+                            <p class="text-sm text-slate-600">Hacemos la extracción con técnica cuidadosa.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-sm">5</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Tu Recuperación</h4>
+                            <p class="text-sm text-slate-600">Te damos indicaciones médicas y te llamamos para ver cómo sigues.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: ALIANZA FARMACIA -->
+        <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6 text-center mb-12">
+            <svg class="w-8 h-8 text-blue-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <h3 class="text-lg font-bold text-blue-900 mb-1">Aliado de Recuperación</h3>
+            <p class="text-blue-800 text-sm">
+                En <strong>Farmacia Dayamí</strong> encontrarás asesoría rápida y todos los medicamentos post-operatorios que te recetemos.
+                <a href="https://dayami.netlify.app" target="_blank" class="font-semibold underline ml-1 hover:text-blue-600">Visitar farmacia.</a>
             </p>
         </div>
-    </div>
+
+        <!-- CTA FINAL -->
+        <div class="text-center mt-12 bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">¡Recupera tu salud bucal!</h2>
+            <p class="text-slate-600 mb-6">Escríbenos para agendar tu valoración.</p>
+            <a href="index.html#contacto" class="inline-flex items-center justify-center px-8 py-4 w-full sm:w-auto text-lg font-bold rounded-full shadow-lg text-white bg-secondary hover:bg-emerald-500 transition-all transform hover:-translate-y-1">
+                Agenda tu Valoración
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+        </div>
+
+    </main>
+
 </body>
 </html>

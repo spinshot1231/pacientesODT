@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criterios de Salud y Seguridad Clínica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased p-4 sm:p-8">
+
+    <div class="max-w-3xl mx-auto">
+        <!-- Botón Volver -->
+        <button onclick="window.history.back()" class="flex items-center text-gray-500 hover:text-indigo-600 transition mb-6">
+            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Volver a la página anterior
+        </button>
+
+        <!-- Cabecera -->
+        <header class="bg-white p-8 rounded-3xl shadow-sm border-t-8 border-indigo-600 mb-8">
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-4">¿Todos pueden recibir estos tratamientos?</h1>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                Aunque nuestro objetivo es siempre salvar tu sonrisa, hay situaciones clínicas específicas donde proceder con una prótesis o incrustación no es recomendable de inmediato.
+            </p>
+        </header>
+
+        <!-- Bloque Principal -->
+        <div class="space-y-8">
+            <section class="bg-white p-8 rounded-3xl shadow-sm">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">¿Cuándo decimos que "no"?</h2>
+                <div class="space-y-4 text-gray-700">
+                    <p>Principalmente cuando el diente que queda de base es demasiado débil para sostener la nueva pieza, o cuando hay una <strong>infección activa</strong> en la encía (periodontitis) que primero debemos curar.</p>
+                    <div class="bg-indigo-50 border-l-4 border-indigo-600 p-4 text-indigo-900 font-medium">
+                        Todo diagnóstico definitivo y plan de acción se establece siempre en tu primera consulta de diagnóstico presencial.
+                    </div>
+                    <p class="italic text-gray-500">"Seguridad ante todo: Mi compromiso es que el tratamiento que te realice dure muchos años y sea saludable. Si al revisarte veo que el riesgo de que el trabajo falle es alto, te lo diré con total honestidad y buscaremos la alternativa que sí sea segura para ti."</p>
+                </div>
+            </section>
+
+            <!-- Grid de Contraindicaciones -->
+            <section class="grid gap-6 md:grid-cols-2">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-gray-900 mb-3">Incrustaciones (Cerámica)</h3>
+                    <ul class="text-sm text-gray-600 space-y-2 list-disc pl-4">
+                        <li>Falta de tejido dentario (daño > 50-60%).</li>
+                        <li>Bruxismo severo no controlado.</li>
+                        <li>Imposibilidad de aislamiento (caries muy profunda bajo encía).</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-gray-900 mb-3">Puentes (Fijos)</h3>
+                    <ul class="text-sm text-gray-600 space-y-2 list-disc pl-4">
+                        <li>Pilares débiles (movilidad o raíces cortas).</li>
+                        <li>Espacios muy grandes (más de 2-3 dientes seguidos).</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 md:col-span-2">
+                    <h3 class="font-bold text-gray-900 mb-3">Prótesis Removibles (PPR)</h3>
+                    <ul class="text-sm text-gray-600 space-y-2 list-disc pl-4">
+                        <li>Higiene oral deficiente (riesgo alto de daño a dientes vecinos).</li>
+                        <li>Enfermedad periodontal activa (encías sangrantes, inflamadas, pérdida de hueso).</li>
+                        <li>Expectativas estéticas fuera de la realidad técnica de la PPR.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECCIÓN EDUCATIVA (PARA EL ESTUDIANTE) -->
+            <section class="bg-gray-900 p-8 rounded-3xl shadow-xl text-white">
+                <h2 class="text-2xl font-bold mb-6 text-indigo-400">Guía de Criterio Clínico (Estudiante)</h2>
+                <div class="space-y-6 text-gray-300 text-sm md:text-base">
+                    <div>
+                        <h4 class="font-bold text-white mb-2">Tu Guía de Acción:</h4>
+                        <p>Cuando identifiques un riesgo, no digas solo "no se puede". Usa este enfoque: <em>"Juan, después de mi evaluación, veo que tu encía no está lista para este tratamiento ahora. Si lo hacemos, corremos el riesgo de que la pieza falle pronto. Primero vamos a realizar [limpieza/curación], y una vez estable, será el momento perfecto para colocar tu prótesis con total seguridad."</em></p>
+                    </div>
+                    
+                    <div class="bg-indigo-900/50 p-4 rounded-xl border border-indigo-700">
+                        <p class="font-bold text-white italic">"Regla de oro: Siempre primero periodoncia, luego rehabilitación. No inicies restauraciones si el paciente presenta inflamación o enfermedad periodontal."</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="mt-12 text-center text-gray-400 text-sm py-8">
+            <p>Clínica de Práctica Supervisada - Documento Educativo y de Seguridad Clínica</p>
+        </footer>
+    </div>
+
+</body>
+</html>

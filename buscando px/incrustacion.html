@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PractiDent | Incrustaciones Dentales</title>
+    <title>PractiDent | Incrustaciones Dentales Estéticas</title>
+    <link rel="icon" type="image/png" href="image/titulo.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,87 +24,208 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        html { scroll-behavior: smooth; }
+        .bg-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50 min-h-screen flex flex-col justify-center items-center">
-    
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-4xl">
-        <div class="bg-white p-8 sm:p-12 rounded-3xl shadow-2xl border-t-8 border-secondary">
-            
-            <h1 class="text-4xl font-extrabold text-secondary mb-2">Incrustaciones Dentales Estéticas</h1>
-            <p class="text-2xl font-bold text-gray-700 mb-6">Máxima Estética y Durabilidad: Cubre solo una Mínima Parte del Material.</p>
-            
-            <p class="text-xl text-gray-700 mb-8">
-                Las incrustaciones son la solución ideal para restaurar dientes con desgaste moderado a severo, ofreciendo mayor resistencia y estética que las restauraciones directas. Ofrecemos este servicio avanzado bajo estricta supervisión, solicitando tu cooperación para los materiales de laboratorio (principalmente cerámica).
+<body class="font-sans text-gray-800 bg-gray-50/50 bg-pattern min-h-screen">
+
+    <!-- Navbar Simple -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+            <a href="index.html#servicios" class="flex items-center text-gray-500 hover:text-primary transition font-medium text-sm">
+                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                Volver a Servicios
+            </a>
+            <img src="image/titulo.png" alt="PractiDent" class="h-8 w-8 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/32x32/4f46e5/ffffff?text=P'"/>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 sm:px-6 py-8 sm:py-12 max-w-3xl">
+        
+        <!-- HEADER -->
+        <header class="text-center mb-10">
+            <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider rounded-full mb-3">Alta Estética</span>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
+                Incrustaciones Dentales Estéticas
+            </h1>
+            <p class="text-xl sm:text-2xl font-bold text-gray-600">
+                Salva tu diente con la máxima calidad y a una fracción del costo real.
             </p>
+        </header>
 
-            <div class="space-y-10">
-                
-                <!-- PROCESO SIMPLIFICADO DE ATENCIÓN (4 PASOS) -->
-                <div class="border-l-4 border-primary pl-4">
-                    <h3 class="text-2xl font-bold text-gray-900">Proceso de Restauración Estética</h3>
-                    <p class="mt-2 text-gray-600 mb-4">
-                        Tu incrustación se realiza en dos citas para garantizar la perfección en el ajuste y la estética:
-                    </p>
-                    <ol class="mt-2 text-gray-700 list-decimal list-inside space-y-2 font-medium">
-                        <li>**1. Valoración y Cotización:** Contacto y valoración por el alumno. El profesor aprueba el caso y se te presenta el costo de cooperación final. **El costo final se cotiza directamente contigo.**</li>
-                        <li>**2. Preparación y Toma de Impresión:** Se agenda la cita para preparar el diente y tomar la impresión que se enviará al laboratorio.</li>
-                        <li>**3. Fabricación:** El laboratorio fabrica tu incrustación de cerámica (con la cooperación ya realizada).</li>
-                        <li>**4. Cementación y Ajustes:** Colocación y cementación final de la incrustación y citas de seguimiento para verificar la oclusión.</li>
-                    </ol>
-                    <div class="mt-4 p-3 bg-red-50 text-danger rounded-lg font-semibold border border-danger/50">
-                        ⚠️ **IMPORTANTE:** Citas disponibles ÚNICAMENTE en los días y horarios clínicos del alumno.
-                    </div>
-                </div>
-
-                <!-- NOTA DE COSTOS -->
-                <div class="p-4 bg-secondary/10 border-l-4 border-secondary rounded-lg text-gray-800 font-semibold">
-                    <p>
-                        **¡Aclaración Importante!** Los costos de "Cooperación Mínima" en la tabla son estimados y de referencia. Por favor, pregunta directamente al estudiante por el costo final al momento de la valoración para tu completa conformidad.
-                    </p>
-                </div>
-
-                <!-- TABLA DE COSTOS - INCRUSTACIONES -->
-                <div class="border-l-4 border-secondary pl-4 pt-4">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Incrustaciones Dentales (Enfoque en Cerámica)</h3>
-                    <div class="overflow-x-auto rounded-lg shadow-md">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-secondary text-white">
-                                <tr>
-                                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">Tratamiento</th>
-                                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">Precio Mercado (MXN)</th>
-                                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider bg-primary/80">Tu Cooperación Mínima*</th>
-                                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">Comentarios</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <tr>
-                                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">Incrustación Cerámica</td>
-                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">$4,000 – $6,100</td>
-                                    <td class="px-4 py-3 whitespace-nowrap text-sm font-bold text-primary">$2,000 – $3,000</td>
-                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">Depende del desgaste del diente.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="mt-3 text-xs text-gray-500 italic">*La cooperación cubre el costo de materiales de laboratorio, no genera lucro.</p>
-                </div>
+        <!-- IMAGEN PRINCIPAL -->
+        <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 mb-10 relative bg-white">
+            <img src="image/incrustacion2.jpg" alt="Incrustación de cerámica colocándose en el diente" class="w-full h-auto object-cover max-h-80" onerror="this.onerror=null;this.src='https://placehold.co/800x400/10b981/ffffff?text=INCRUSTACION+DENTAL'"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-4">
+                <p class="text-white font-medium text-sm drop-shadow-md">Piezas a la medida que encajan perfectamente.</p>
             </div>
+        </div>
 
-            <div class="mt-10 text-center">
-                <p class="text-lg text-gray-700 mb-4 font-semibold">
-                    Recupera <span class="text-red-600 font-extrabold uppercase">TU SONRISA</span> con un Regalo para Mejorar tu Salud.
-                </p>
-                <a href="index.html#contacto" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-lg font-semibold rounded-full shadow-lg text-white bg-secondary hover:bg-emerald-600 transition duration-300 transform hover:scale-105">
-                    Agenda tu Valoración
-                </a>
-            </div>
-            
-            <p class="mt-8 text-sm text-center text-gray-500">
-                <a href="index.html#servicios" class="text-primary hover:text-indigo-700 font-medium">&larr; Volver a Servicios</a>
+        <!-- INTRODUCCIÓN -->
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 mb-8 text-gray-700 text-lg leading-relaxed space-y-4">
+            <p>
+                Si tienes un diente muy desgastado o con una caries muy grande, una incrustación de cerámica es la mejor opción para reconstruirlo y que se vea <strong class="text-primary font-bold">100% natural</strong>.
+            </p>
+            <p>
+                Al atenderte con nosotros en PractiDent, nuestra mano de obra especializada es <strong class="text-danger font-bold uppercase">totalmente gratuita</strong>; tú solo cubres el material del laboratorio.
             </p>
         </div>
-    </div>
+
+        <!-- COMPARATIVA DE PRECIOS -->
+        <div class="mb-12 relative">
+            <div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-20"></div>
+            <div class="relative bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-gray-100">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center border-b pb-4">Tu Ahorro es Gigante</h2>
+                
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <!-- Mercado -->
+                    <div class="flex-1 bg-gray-50 rounded-xl p-5 border border-gray-200 opacity-80 text-center sm:text-left">
+                        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Clínicas Privadas</p>
+                        <p class="text-3xl font-extrabold text-gray-400 mt-1 line-through decoration-2 decoration-gray-300">$4,000 - $6,100</p>
+                        <p class="text-xs text-gray-500 mt-2">Te cobran ganancia del dentista, renta y materiales.</p>
+                    </div>
+
+                    <!-- Practident -->
+                    <div class="flex-1 bg-indigo-50 rounded-xl p-5 border border-primary/20 ring-2 ring-primary ring-offset-2 relative text-center sm:text-left shadow-[0_0_15px_rgba(79,70,229,0.15)]">
+                        <span class="absolute -top-3 right-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest shadow-sm">Tu Opción</span>
+                        <p class="text-sm font-semibold text-primary uppercase tracking-wide">Con PractiDent</p>
+                        <p class="text-3xl font-extrabold text-gray-900 mt-1">$900 - $1,500</p>
+                        <p class="text-xs text-gray-600 mt-2 font-medium">Pago directo de materiales de laboratorio. **Cero cobro por mano de obra o supervisión.**</p>
+                    </div>
+                </div>
+
+                <!-- EXPLICACIÓN DE POR QUÉ ES MÁS BARATO -->
+                <div class="mt-6 bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        ¿Por qué la diferencia? ¿Hay algún truco?
+                    </h3>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        No hay ningún truco. En una clínica privada pagas la ganancia del dentista, la renta y los materiales. Con nosotros, ese costo extra desaparece. <strong>Nosotros ponemos nuestro conocimiento, tiempo y la estricta supervisión de especialistas totalmente gratis para ti.</strong> Tu dinero no es ganancia para nosotros; va 100% directo a pagarle al laboratorio dental externo que fabricará tu pieza a la medida exacta.
+                    </p>
+                </div>
+
+                <div class="mt-6 flex items-start gap-3 bg-secondary/10 p-4 rounded-lg">
+                    <svg class="w-6 h-6 text-secondary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <div>
+                        <p class="font-bold text-gray-900 text-sm sm:text-base">Trato humano y flexible (100% Personalizado)</p>
+                        <p class="text-sm text-gray-700 mt-1">Cada diente es diferente. El costo final lo platicamos en persona en tu primera cita para llegar a un acuerdo que sea cómodo para tus posibilidades. <strong class="text-secondary font-semibold">Queremos que el dinero no sea un obstáculo.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ¿QUÉ ES? -->
+        <div class="mb-12 flex flex-col md:flex-row gap-6 items-center">
+            <div class="md:w-2/3">
+                <h3 class="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    ¿Qué es exactamente?
+                </h3>
+                <p class="text-gray-700 text-lg">
+                    Imagina que a tu diente le falta un pedazo muy grande. En lugar de rellenarlo con una simple pasta (resina) que se puede caer o romper, mandamos hacer al laboratorio una <strong>"pieza de rompecabezas" a la medida</strong>, fabricada en cerámica pura. Esta pieza encaja perfectamente y reconstruye tu diente por completo.
+                </p>
+            </div>
+            <div class="md:w-1/3 flex justify-center">
+                <div class="bg-white p-2 rounded-xl border border-gray-200 shadow-sm">
+                    <img src="image/incrustacion3.png" alt="Diagrama de incrustación" class="w-32 h-auto object-contain" onerror="this.onerror=null;this.style.display='none'"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- BENEFICIOS -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-12">
+            <div class="bg-gray-50 px-6 py-4 border-b border-gray-100">
+                <h3 class="text-xl font-bold text-gray-900">¿Por qué es mejor que un empaste normal?</h3>
+            </div>
+            <div class="p-6">
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 h-6 w-6 rounded-full bg-secondary/20 flex items-center justify-center mr-3 mt-0.5"><svg class="h-4 w-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></span>
+                        <p class="text-gray-700"><strong class="text-gray-900 block sm:inline">Máxima duración:</strong> La cerámica es muchísimo más resistente que una resina; te durará muchos años y le devuelve la fuerza a tu muela para que comas sin miedo.</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 h-6 w-6 rounded-full bg-secondary/20 flex items-center justify-center mr-3 mt-0.5"><svg class="h-4 w-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></span>
+                        <p class="text-gray-700"><strong class="text-gray-900 block sm:inline">Estética perfecta:</strong> El material no se mancha y copia el color exacto de tus otros dientes. Nadie notará que la tienes. Usamos el mismo material de las mejores clínicas privadas.</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 h-6 w-6 rounded-full bg-secondary/20 flex items-center justify-center mr-3 mt-0.5"><svg class="h-4 w-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></span>
+                        <p class="text-gray-700"><strong class="text-gray-900 block sm:inline">Protege tu diente natural:</strong> Ayuda a conservar la mayor cantidad de tu diente sano sin tener que rebajarlo todo para poner una corona completa.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PASOS -->
+        <div class="mb-12 relative overflow-hidden bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100">
+            <!-- Marca de agua decorativa -->
+            <img src="image/incrustacion1.jpg" alt="" class="absolute -right-20 -bottom-20 w-64 opacity-5 pointer-events-none mix-blend-multiply" onerror="this.style.display='none'"/>
+            
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 relative z-10">Proceso Seguro (4 Pasos)</h3>
+            <div class="space-y-6 relative z-10">
+                <div class="flex">
+                    <div class="flex flex-col items-center mr-4">
+                        <div class="w-8 h-8 rounded-full bg-primary text-white font-bold flex items-center justify-center shadow-md">1</div>
+                        <div class="h-full w-0.5 bg-gray-200 mt-2"></div>
+                    </div>
+                    <div class="pb-6">
+                        <h4 class="text-lg font-bold text-gray-900">Valoración y Acuerdo</h4>
+                        <p class="text-gray-600 mt-1">Revisamos tu diente, el profesor aprueba el caso y acordamos juntos el costo exacto de tu cooperación.</p>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="flex flex-col items-center mr-4">
+                        <div class="w-8 h-8 rounded-full bg-primary text-white font-bold flex items-center justify-center shadow-md">2</div>
+                        <div class="h-full w-0.5 bg-gray-200 mt-2"></div>
+                    </div>
+                    <div class="pb-6">
+                        <h4 class="text-lg font-bold text-gray-900">Preparación y Molde</h4>
+                        <p class="text-gray-600 mt-1">Preparamos el diente y tomamos una impresión (un molde) muy precisa.</p>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="flex flex-col items-center mr-4">
+                        <div class="w-8 h-8 rounded-full bg-primary text-white font-bold flex items-center justify-center shadow-md">3</div>
+                        <div class="h-full w-0.5 bg-gray-200 mt-2"></div>
+                    </div>
+                    <div class="pb-6">
+                        <h4 class="text-lg font-bold text-gray-900">Fabricación</h4>
+                        <p class="text-gray-600 mt-1">El laboratorio dental externo construye tu incrustación a la medida exacta.</p>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="flex flex-col items-center mr-4">
+                        <div class="w-8 h-8 rounded-full bg-secondary text-white font-bold flex items-center justify-center shadow-md"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-secondary">Colocación Final</h4>
+                        <p class="text-gray-600 mt-1">Cementamos (pegamos) la incrustación en tu diente, ajustamos tu mordida para que sientas todo perfecto y revisamos que quede impecable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CALL TO ACTION -->
+        <div class="text-center bg-gray-900 rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+            <div class="relative z-10">
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">¿Listo para dar el primer paso?</h3>
+                <p class="text-gray-300 text-lg mb-8 max-w-xl mx-auto">
+                    Escríbenos para agendar tu cita de valoración en nuestros horarios clínicos y salva tu muela con la mejor calidad.
+                </p>
+                <a href="index.html#contacto" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-full shadow-[0_0_20px_rgba(16,185,129,0.4)] text-white bg-secondary hover:bg-emerald-500 hover:scale-105 transition-all duration-300">
+                    Agendar mi Valoración
+                    <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <p class="mt-4 text-xs text-gray-400">Atención exclusiva en horarios de práctica supervisada.</p>
+            </div>
+        </div>
+
+    </main>
 </body>
 </html>
